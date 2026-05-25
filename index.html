@@ -43,234 +43,139 @@ body::after {
   content: '';
   position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: overlay;
+  pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
 }
 
-/* ── HEADER ── */
+/* HEADER */
 .hdr {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(14,12,10,0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   padding: 14px 40px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.hdr-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px; font-weight: 600;
-  color: var(--text); letter-spacing: 0.04em;
-}
+.hdr-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
 .hdr-right { display: flex; align-items: center; gap: 20px; }
-.hdr-step {
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text3);
-}
+.hdr-step { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
 .hdr-step span { color: var(--gold); font-weight: 500; }
-.prog-track {
-  width: 120px; height: 2px;
-  background: var(--border); border-radius: 2px; overflow: hidden;
-}
-.prog-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold2), var(--gold));
-  border-radius: 2px;
-  transition: width 0.5s cubic-bezier(.4,0,.2,1);
-  width: 0%;
-}
+.prog-track { width: 120px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold2), var(--gold)); border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1); width: 0%; }
 
 main { padding-top: 72px; }
 
-/* ── SCREENS ── */
+/* SCREENS */
 .screen { display: none; }
 .screen.active { display: block; animation: rise .4s ease forwards; }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── WELCOME ── */
-.welcome {
-  max-width: var(--w);
-  margin: 0 auto;
-  padding: 80px 40px 160px;
-}
-.eyebrow {
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 28px;
-  display: flex; align-items: center; gap: 12px;
-}
-.eyebrow::before {
-  content: ''; display: block; width: 32px; height: 1px; background: var(--gold2);
-}
-.welcome h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(38px, 6vw, 64px);
-  line-height: 1.08; font-weight: 600;
-  color: var(--text); margin-bottom: 32px;
-}
+/* WELCOME */
+.welcome { max-width: var(--w); margin: 0 auto; padding: 80px 40px 160px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold2); }
+.welcome h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 6vw, 64px); line-height: 1.08; font-weight: 600; color: var(--text); margin-bottom: 32px; }
 .welcome h1 em { font-style: italic; color: var(--gold); }
-.welcome-lead {
-  font-size: 17px; color: var(--text2); line-height: 1.75;
-  max-width: 500px; margin-bottom: 48px; font-weight: 300;
-}
-.stats {
-  display: flex; gap: 40px; margin-bottom: 56px;
-  border-top: 1px solid var(--border); padding-top: 32px;
-}
-.stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 600; color: var(--text); line-height: 1;
-}
-.stat-lbl {
-  font-size: 12px; color: var(--text3); margin-top: 4px; letter-spacing: 0.04em;
-}
-.btn-start {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--gold); color: var(--bg);
-  font-family: 'Epilogue', sans-serif; font-weight: 500;
-  font-size: 15px; padding: 15px 32px;
-  border: none; border-radius: 2px; cursor: pointer;
-  letter-spacing: 0.04em;
-  transition: background .2s, transform .15s;
-}
+.welcome-lead { font-size: 17px; color: var(--text2); line-height: 1.75; max-width: 500px; margin-bottom: 48px; font-weight: 300; }
+.stats { display: flex; gap: 0; margin-bottom: 56px; border-top: 1px solid var(--border); padding-top: 32px; }
+.stat-item { padding-right: 32px; }
+.stat-item + .stat-item { padding-left: 32px; border-left: 1px solid var(--border); }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--text); line-height: 1; }
+.stat-lbl { font-size: 12px; color: var(--text3); margin-top: 4px; letter-spacing: 0.04em; }
+.btn-start { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: 'Epilogue', sans-serif; font-weight: 500; font-size: 15px; padding: 15px 32px; border: none; border-radius: 2px; cursor: pointer; letter-spacing: 0.04em; transition: background .2s, transform .15s; }
 .btn-start:hover { background: var(--gold2); transform: translateY(-1px); }
 
-/* ── PART SCREEN ── */
-.part-screen {
-  max-width: var(--w);
-  margin: 0 auto;
-  padding: 64px 40px 160px;
-}
+/* PART SCREEN */
+.part-screen { max-width: var(--w); margin: 0 auto; padding: 64px 40px 160px; }
 .part-header { margin-bottom: 56px; }
-.part-num {
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
-  display: flex; align-items: center; gap: 10px;
-}
+.part-num { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .part-num::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold2); }
-.part-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4.5vw, 46px);
-  line-height: 1.1; font-weight: 600;
-  color: var(--text); margin-bottom: 12px;
-}
+.part-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4.5vw, 46px); line-height: 1.1; font-weight: 600; color: var(--text); margin-bottom: 12px; }
 .part-title em { font-style: italic; color: var(--gold); }
-.part-sub {
-  font-size: 15px; color: var(--text2); font-weight: 300; font-style: italic;
-}
+.part-sub { font-size: 15px; color: var(--text2); font-weight: 300; font-style: italic; }
 
-/* ── QUESTION ── */
+/* REMAINING INDICATOR */
+.remaining-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-soft); border: 1px solid var(--border2);
+  padding: 6px 14px; border-radius: 2px;
+  font-size: 12px; color: var(--gold2); letter-spacing: 0.06em;
+  margin-bottom: 48px;
+}
+.remaining-badge svg { flex-shrink: 0; }
+
+/* QUESTION */
 .question { margin-bottom: 44px; }
 .q-wrap { display: flex; gap: 20px; }
-.q-idx {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px; color: var(--gold);
-  min-width: 24px; padding-top: 2px; font-style: italic;
-}
+.q-idx { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); min-width: 24px; padding-top: 2px; font-style: italic; }
 .q-body { flex: 1; min-width: 0; }
-.q-text {
-  font-size: 16px; font-weight: 500; color: var(--text);
-  line-height: 1.5; margin-bottom: 6px;
-}
-.q-hint {
-  font-size: 13px; color: var(--text3); font-weight: 300;
-  font-style: italic; margin-bottom: 14px; line-height: 1.5;
-}
+.q-text { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.5; margin-bottom: 6px; }
+.q-hint { font-size: 13px; color: var(--text3); font-weight: 300; font-style: italic; margin-bottom: 14px; line-height: 1.5; }
 
-/* ── INPUTS ── */
+/* INPUTS */
 .q-input, .q-textarea {
-  width: 100%;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-family: 'Epilogue', sans-serif;
-  font-size: 14px; font-weight: 300;
-  padding: 14px 16px;
-  border-radius: 2px;
-  resize: vertical;
-  line-height: 1.65;
+  width: 100%; background: var(--bg2); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Epilogue', sans-serif; font-size: 14px; font-weight: 300;
+  padding: 14px 16px; border-radius: 2px; resize: vertical; line-height: 1.65;
   transition: border-color .2s, box-shadow .2s, background .2s;
 }
 .q-input::placeholder, .q-textarea::placeholder { color: var(--text4); }
-.q-input:focus, .q-textarea:focus {
-  outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(232,201,122,0.12);
-  background: var(--bg-focus);
-}
+.q-input:focus, .q-textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,201,122,0.12); background: var(--bg-focus); }
 .q-textarea { min-height: 110px; }
 .q-input.err, .q-textarea.err { border-color: var(--err); }
 .q-errmsg { font-size: 12px; color: var(--err); margin-top: 6px; display: none; }
 .q-errmsg.on { display: block; }
 
-/* ── CHOICE BUTTONS ── */
-.choice-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 8px;
-}
-.choice-btn {
-  display: flex; align-items: center; justify-content: center;
-  background: var(--bg2); border: 1px solid var(--border);
-  color: var(--text2); border-radius: 2px;
-  padding: 12px 14px; cursor: pointer;
-  font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400;
-  text-align: center; transition: all .2s;
-  min-height: 50px; line-height: 1.3;
-  flex-direction: column; gap: 4px;
-}
+/* CHOICE */
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.choice-btn { display: flex; align-items: center; justify-content: center; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); border-radius: 2px; padding: 12px 14px; cursor: pointer; font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400; text-align: center; transition: all .2s; min-height: 50px; line-height: 1.3; flex-direction: column; gap: 4px; }
 .choice-btn small { font-size: 11px; color: var(--text3); font-weight: 300; }
 .choice-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg3); }
-.choice-btn.active {
-  background: var(--gold-soft);
-  border-color: var(--gold);
-  color: var(--gold);
-  font-weight: 500;
-}
+.choice-btn.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); font-weight: 500; }
 .choice-btn.active small { color: var(--gold2); }
 
-/* ── CHECK BUTTONS ── */
-.check-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 8px;
-}
-.check-btn {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--bg2); border: 1px solid var(--border);
-  color: var(--text2); border-radius: 2px;
-  padding: 12px 14px; cursor: pointer;
-  font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400;
-  transition: all .2s; text-align: left;
-}
+/* CHECK */
+.check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+.check-btn { display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); border-radius: 2px; padding: 12px 14px; cursor: pointer; font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400; transition: all .2s; text-align: left; }
 .check-btn:hover { border-color: var(--border2); color: var(--text); }
-.check-btn.active {
-  background: var(--gold-soft); border-color: var(--gold); color: var(--gold);
-}
-.check-mark {
-  width: 14px; height: 14px;
-  border: 1px solid var(--text3); border-radius: 2px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
+.check-btn.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
+.check-mark { width: 14px; height: 14px; border: 1px solid var(--text3); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
 .check-btn.active .check-mark { background: var(--gold); border-color: var(--gold); }
-.check-btn.active .check-mark::after {
-  content: ''; width: 6px; height: 6px; background: var(--bg); border-radius: 1px;
-}
+.check-btn.active .check-mark::after { content: ''; width: 6px; height: 6px; background: var(--bg); border-radius: 1px; }
 
-/* ── DIVIDER ── */
-.divider {
-  display: flex; align-items: center; gap: 16px; margin: 48px 0;
-}
+/* CONSENT */
+.consent-wrap { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+.consent-btn { display: flex; align-items: flex-start; gap: 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; padding: 18px 20px; cursor: pointer; width: 100%; text-align: left; transition: all .2s; }
+.consent-btn:hover { border-color: var(--border2); }
+.consent-btn.active { background: var(--gold-soft); border-color: var(--gold); }
+.consent-box { width: 16px; height: 16px; border: 1px solid var(--text3); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; transition: all .2s; }
+.consent-btn.active .consent-box { background: var(--gold); border-color: var(--gold); }
+.consent-btn.active .consent-box::after { content: ''; width: 7px; height: 7px; background: var(--bg); border-radius: 1px; }
+.consent-text { font-size: 13px; color: var(--text2); line-height: 1.7; font-weight: 300; }
+
+/* DIVIDER */
+.divider { display: flex; align-items: center; gap: 16px; margin: 48px 0; }
 .divider-line { flex: 1; height: 1px; background: var(--border); }
-.divider-mark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; color: var(--text4);
-}
+.divider-mark { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--text4); }
 
-/* ── NAV ── */
+/* LOADER OVERLAY */
+.loader-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(14,12,10,0.92);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 20px;
+}
+.loader-overlay.on { display: flex; }
+.loader-spinner {
+  width: 36px; height: 36px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-text { font-size: 13px; color: var(--text3); letter-spacing: 0.06em; }
+
+/* NAV */
 .nav {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
   background: rgba(14,12,10,0.96);
@@ -279,62 +184,27 @@ main { padding-top: 72px; }
   padding: 18px 40px;
   display: flex; justify-content: space-between; align-items: center;
 }
-.btn-nav {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: var(--text2);
-  font-family: 'Epilogue', sans-serif; font-weight: 400;
-  font-size: 14px; padding: 10px 20px;
-  border: 1px solid var(--border); border-radius: 2px;
-  cursor: pointer; transition: all .2s; letter-spacing: 0.02em;
-}
+.btn-nav { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text2); font-family: 'Epilogue', sans-serif; font-weight: 400; font-size: 14px; padding: 10px 20px; border: 1px solid var(--border); border-radius: 2px; cursor: pointer; transition: all .2s; letter-spacing: 0.02em; }
 .btn-nav:hover { border-color: var(--border2); color: var(--text); background: var(--bg2); }
 .btn-nav:disabled { opacity: .3; cursor: default; pointer-events: none; }
-.btn-next {
-  background: var(--gold); color: var(--bg); border-color: var(--gold);
-}
+.btn-next { background: var(--gold); color: var(--bg); border-color: var(--gold); }
 .btn-next:hover { background: var(--gold2); color: var(--bg); border-color: var(--gold2); }
 .nav-mid { font-size: 12px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
 
-/* ── CONFIRMATION ── */
-.confirm {
-  max-width: var(--w); margin: 0 auto;
-  padding: 80px 40px 140px; text-align: center;
-}
-.confirm-check {
-  width: 56px; height: 56px;
-  border: 1.5px solid var(--ok); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 40px;
-  box-shadow: 0 0 24px rgba(126,200,154,0.15);
-}
-.confirm-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(30px, 5vw, 50px);
-  line-height: 1.1; margin-bottom: 20px;
-  color: var(--text); font-weight: 600;
-}
-.confirm-txt {
-  font-size: 16px; color: var(--text2); font-weight: 300;
-  line-height: 1.75; max-width: 460px; margin: 0 auto 48px;
-}
-.steps-block {
-  text-align: left;
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 2px; padding: 28px 32px;
-  max-width: 440px; margin: 0 auto 40px;
-}
-.steps-block h3 {
-  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 24px;
-}
+/* CONFIRMATION */
+.confirm { max-width: var(--w); margin: 0 auto; padding: 80px 40px 140px; text-align: center; }
+.confirm-check { width: 56px; height: 56px; border: 1.5px solid var(--ok); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 40px; box-shadow: 0 0 24px rgba(126,200,154,0.15); }
+.confirm-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 5vw, 50px); line-height: 1.1; margin-bottom: 20px; color: var(--text); font-weight: 600; }
+.confirm-txt { font-size: 16px; color: var(--text2); font-weight: 300; line-height: 1.75; max-width: 460px; margin: 0 auto 48px; }
+.steps-block { text-align: left; background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; padding: 28px 32px; max-width: 440px; margin: 0 auto 40px; }
+.steps-block h3 { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
 .step-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
 .step-row:last-child { margin-bottom: 0; }
-.step-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px; color: var(--gold); line-height: 1.3; min-width: 20px;
-}
+.step-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); line-height: 1.3; min-width: 20px; }
 .step-t { font-size: 14px; color: var(--text2); line-height: 1.5; font-weight: 300; }
 .step-t strong { color: var(--text); font-weight: 500; }
+.legal-footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
+.legal-footer p { font-size: 11px; color: var(--text4); line-height: 1.8; letter-spacing: 0.02em; }
 
 ::selection { background: var(--gold); color: var(--bg); }
 
@@ -342,7 +212,8 @@ main { padding-top: 72px; }
   .hdr { padding: 12px 20px; }
   .prog-track { width: 80px; }
   .welcome, .part-screen, .confirm { padding-left: 20px; padding-right: 20px; }
-  .stats { gap: 24px; }
+  .stats { flex-direction: column; gap: 0; }
+  .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 20px; margin-top: 20px; }
   .nav { padding: 14px 20px; }
   .choice-grid { grid-template-columns: 1fr 1fr; }
   .check-grid { grid-template-columns: 1fr; }
@@ -351,39 +222,32 @@ main { padding-top: 72px; }
 </head>
 <body>
 
+<!-- LOADER -->
+<div class="loader-overlay" id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">Envoi en cours...</div>
+</div>
+
 <header class="hdr">
   <div class="hdr-brand">AuthorScale</div>
   <div class="hdr-right">
     <div class="hdr-step" id="hdrStep">—</div>
-    <div class="prog-track">
-      <div class="prog-fill" id="progFill"></div>
-    </div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
   </div>
 </header>
 
 <main>
 
-<!-- ═══ SCREEN 0 : WELCOME ═══ -->
+<!-- SCREEN 0 : WELCOME -->
 <div class="screen active" id="s0">
   <div class="welcome">
     <div class="eyebrow">Qualification</div>
     <h1>Avant de commencer,<br><em>parlons de vous.</em></h1>
-    <p class="welcome-lead">
-      6 questions pour comprendre votre contexte et vérifier que notre approche correspond à vos attentes.
-    </p>
+    <p class="welcome-lead">7 questions pour comprendre votre contexte et vérifier que notre approche correspond à vos attentes.</p>
     <div class="stats">
-      <div>
-        <div class="stat-num">6</div>
-        <div class="stat-lbl">questions</div>
-      </div>
-      <div>
-        <div class="stat-num">5'</div>
-        <div class="stat-lbl">durée estimée</div>
-      </div>
-      <div>
-        <div class="stat-num">48h</div>
-        <div class="stat-lbl">retour garanti</div>
-      </div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-lbl">questions</div></div>
+      <div class="stat-item"><div class="stat-num">5'</div><div class="stat-lbl">durée estimée</div></div>
+      <div class="stat-item"><div class="stat-num">48h</div><div class="stat-lbl">retour garanti</div></div>
     </div>
     <button class="btn-start" onclick="go(1)">
       Commencer
@@ -392,7 +256,7 @@ main { padding-top: 72px; }
   </div>
 </div>
 
-<!-- ═══ SCREEN 1 : PROFIL ═══ -->
+<!-- SCREEN 1 : PROFIL -->
 <div class="screen" id="s1">
   <div class="part-screen">
     <div class="part-header">
@@ -417,6 +281,18 @@ main { padding-top: 72px; }
       <div class="q-wrap">
         <div class="q-idx">2</div>
         <div class="q-body">
+          <div class="q-text">Votre adresse email</div>
+          <div class="q-hint">Pour vous recontacter avec notre réponse sous 48h.</div>
+          <input type="email" id="q_email" class="q-input" placeholder="Ex : sophie@monentreprise.com">
+          <div class="q-errmsg" id="err-q_email">Une adresse email valide est requise.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-wrap">
+        <div class="q-idx">3</div>
+        <div class="q-body">
           <div class="q-text">Pourquoi LinkedIn maintenant ?</div>
           <div class="q-hint">Qu'est-ce qui vous a poussé à chercher un ghostwriter à ce moment précis ?</div>
           <textarea id="q2" class="q-textarea" placeholder="Ex : Je veux générer des leads mais je n'ai pas le temps d'écrire régulièrement..."></textarea>
@@ -427,7 +303,7 @@ main { padding-top: 72px; }
   </div>
 </div>
 
-<!-- ═══ SCREEN 2 : LINKEDIN ═══ -->
+<!-- SCREEN 2 : LINKEDIN -->
 <div class="screen" id="s2">
   <div class="part-screen">
     <div class="part-header">
@@ -438,21 +314,15 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">3</div>
+        <div class="q-idx">4</div>
         <div class="q-body">
           <div class="q-text">Combien de posts LinkedIn avez-vous publiés à ce jour ?</div>
           <div class="q-hint">Une estimation suffit — c'est pour calibrer l'analyse de votre voix.</div>
           <div class="choice-grid" id="q3-grid">
-            <button type="button" class="choice-btn" data-val="0" onclick="selectChoice('q3-grid', this)">
-              0 — jamais publié
-              <small>Mais j'ai d'autres écrits</small>
-            </button>
+            <button type="button" class="choice-btn" data-val="0" onclick="selectChoice('q3-grid', this)">0 — jamais publié<small>Mais j'ai d'autres écrits</small></button>
             <button type="button" class="choice-btn" data-val="1-10" onclick="selectChoice('q3-grid', this)">1 à 10 posts</button>
             <button type="button" class="choice-btn" data-val="10-30" onclick="selectChoice('q3-grid', this)">10 à 30 posts</button>
-            <button type="button" class="choice-btn" data-val="30+" onclick="selectChoice('q3-grid', this)">
-              30+ posts
-              <small>Présence établie</small>
-            </button>
+            <button type="button" class="choice-btn" data-val="30+" onclick="selectChoice('q3-grid', this)">30+ posts<small>Présence établie</small></button>
           </div>
           <div class="q-errmsg" id="err-q3">Veuillez sélectionner une option.</div>
         </div>
@@ -463,23 +333,15 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">4</div>
+        <div class="q-idx">5</div>
         <div class="q-body">
           <div class="q-text">Quel est le vrai frein aujourd'hui ?</div>
           <div class="q-hint">Vous pouvez en sélectionner plusieurs.</div>
           <div class="check-grid" id="q4-grid">
-            <button type="button" class="check-btn" data-val="temps" onclick="toggleCheck(this)">
-              <div class="check-mark"></div> Le temps — publier régulièrement
-            </button>
-            <button type="button" class="check-btn" data-val="idees" onclick="toggleCheck(this)">
-              <div class="check-mark"></div> Les idées — quoi dire
-            </button>
-            <button type="button" class="check-btn" data-val="voix" onclick="toggleCheck(this)">
-              <div class="check-mark"></div> La voix — ne sonne pas comme moi
-            </button>
-            <button type="button" class="check-btn" data-val="resultats" onclick="toggleCheck(this)">
-              <div class="check-mark"></div> Les résultats — pas de leads générés
-            </button>
+            <button type="button" class="check-btn" data-val="temps" onclick="toggleCheck(this)"><div class="check-mark"></div> Le temps — publier régulièrement</button>
+            <button type="button" class="check-btn" data-val="idees" onclick="toggleCheck(this)"><div class="check-mark"></div> Les idées — quoi dire</button>
+            <button type="button" class="check-btn" data-val="voix" onclick="toggleCheck(this)"><div class="check-mark"></div> La voix — ne sonne pas comme moi</button>
+            <button type="button" class="check-btn" data-val="resultats" onclick="toggleCheck(this)"><div class="check-mark"></div> Les résultats — pas de leads générés</button>
           </div>
           <div class="q-errmsg" id="err-q4">Veuillez sélectionner au moins une option.</div>
         </div>
@@ -488,7 +350,7 @@ main { padding-top: 72px; }
   </div>
 </div>
 
-<!-- ═══ SCREEN 3 : OBJECTIF + BUDGET ═══ -->
+<!-- SCREEN 3 : OBJECTIF + BUDGET -->
 <div class="screen" id="s3">
   <div class="part-screen">
     <div class="part-header">
@@ -497,13 +359,28 @@ main { padding-top: 72px; }
       <p class="part-sub">Ce que vous visez et votre rapport à l'investissement.</p>
     </div>
 
+    <!-- Badge "dernière ligne droite" -->
+    <div class="remaining-badge" id="remainingBadge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Dernière partie — vous y êtes presque
+    </div>
+
+    <!-- Erreur réseau -->
+    <div id="network-err" style="display:none; align-items:center; gap:12px; background:#2a1a18; border:1px solid var(--err); border-radius:2px; padding:16px 20px; margin-bottom:32px;">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0"><circle cx="9" cy="9" r="8" stroke="#d97560" stroke-width="1.4"/><path d="M9 5v5M9 12.5v.5" stroke="#d97560" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <div>
+        <div style="font-size:13px; color:#d97560; font-weight:500; margin-bottom:4px;">Erreur d'envoi</div>
+        <div style="font-size:12px; color:var(--text3); line-height:1.6;">Vérifiez votre connexion internet et réessayez. Si le problème persiste, contactez-nous directement à AuthorScale33@gmail.com</div>
+      </div>
+    </div>
+
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">5</div>
+        <div class="q-idx">6</div>
         <div class="q-body">
           <div class="q-text">Dans 3 mois, si LinkedIn fonctionne vraiment — ça ressemble à quoi concrètement ?</div>
           <div class="q-hint">Soyez précis : plus de clients, plus de visibilité, un statut d'expert reconnu...</div>
-          <textarea id="q5" class="q-textarea" placeholder="Ex : 3 nouveaux clients par mois via LinkedIn, reconnu comme expert en transformation digitale dans mon secteur..."></textarea>
+          <textarea id="q5" class="q-textarea" placeholder="Ex : 3 nouveaux clients par mois via LinkedIn, reconnu comme expert en transformation digitale..."></textarea>
           <div class="q-errmsg" id="err-q5">Ce champ est requis.</div>
         </div>
       </div>
@@ -513,68 +390,84 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">6</div>
+        <div class="q-idx">7</div>
         <div class="q-body">
           <div class="q-text">Le budget pour le premier mois (1 000 €) — comment vous vous situez ?</div>
           <div class="q-hint">Pas de jugement. Cela nous aide à adapter notre proposition.</div>
           <div class="choice-grid" id="q6-grid">
-            <button type="button" class="choice-btn" data-val="ok" onclick="selectChoice('q6-grid', this)">
-              C'est OK — prêt(e) à investir
-              <small>Je vois ça comme un investissement business</small>
-            </button>
-            <button type="button" class="choice-btn" data-val="discuter" onclick="selectChoice('q6-grid', this)">
-              À discuter
-              <small>J'ai des questions sur le ROI attendu</small>
-            </button>
-            <button type="button" class="choice-btn" data-val="serré" onclick="selectChoice('q6-grid', this)">
-              Budget serré
-              <small>Mais motivé(e) à trouver une solution</small>
-            </button>
+            <button type="button" class="choice-btn" data-val="ok" onclick="selectChoice('q6-grid', this)">C'est OK — prêt(e) à investir<small>Je vois ça comme un investissement</small></button>
+            <button type="button" class="choice-btn" data-val="discuter" onclick="selectChoice('q6-grid', this)">À discuter<small>J'ai des questions sur le ROI</small></button>
+            <button type="button" class="choice-btn" data-val="serré" onclick="selectChoice('q6-grid', this)">Budget serré<small>Mais motivé(e) à trouver une solution</small></button>
           </div>
           <div class="q-errmsg" id="err-q6">Veuillez sélectionner une option.</div>
         </div>
       </div>
     </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+
+    <!-- SOURCE -->
+    <div class="question">
+      <div class="q-wrap">
+        <div class="q-idx" style="font-style:normal; font-size:11px; padding-top:3px;">+</div>
+        <div class="q-body">
+          <div class="q-text">Comment avez-vous entendu parler d'AuthorScale ?</div>
+          <div class="q-hint">Optionnel — utile pour nous améliorer.</div>
+          <div class="choice-grid" id="q7-grid">
+            <button type="button" class="choice-btn" data-val="linkedin" onclick="selectChoice('q7-grid', this)">LinkedIn</button>
+            <button type="button" class="choice-btn" data-val="bouche-a-oreille" onclick="selectChoice('q7-grid', this)">Bouche à oreille</button>
+            <button type="button" class="choice-btn" data-val="recherche" onclick="selectChoice('q7-grid', this)">Recherche Google</button>
+            <button type="button" class="choice-btn" data-val="autre" onclick="selectChoice('q7-grid', this)">Autre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONSENTEMENT -->
+    <div class="consent-wrap">
+      <button type="button" class="consent-btn" id="consentBtn" onclick="toggleConsent()">
+        <div class="consent-box" id="consentBox"></div>
+        <div class="consent-text">J'accepte qu'AuthorScale utilise ces informations pour traiter ma demande et me recontacter. Ces données sont strictement confidentielles et ne seront jamais transmises à des tiers.</div>
+      </button>
+      <div class="q-errmsg" id="err-consent">Veuillez accepter pour continuer.</div>
+    </div>
+
   </div>
 </div>
 
-<!-- ═══ SCREEN 4 : CONFIRMATION ═══ -->
+<!-- SCREEN 4 : CONFIRMATION -->
 <div class="screen" id="s4">
   <div class="confirm">
     <div class="confirm-check">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M5 11l4.5 4.5L17 7" stroke="#7ec89a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11l4.5 4.5L17 7" stroke="#7ec89a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h2 class="confirm-h1">Bien reçu.</h2>
-    <p class="confirm-txt">
-      Merci pour vos réponses. Nous les lisons attentivement et revenons vers vous sous 48h avec une réponse personnalisée.
-    </p>
+    <p class="confirm-txt">Merci pour vos réponses. Nous les lisons attentivement et revenons vers vous sous 48h avec une réponse personnalisée.</p>
     <div class="steps-block">
       <h3>Prochaine étape</h3>
-      <div class="step-row">
-        <div class="step-n">1</div>
-        <div class="step-t">Nous analysons votre profil et vos réponses.</div>
-      </div>
-      <div class="step-row">
-        <div class="step-n">2</div>
-        <div class="step-t">Vous recevrez <strong>une proposition détaillée</strong> avec l'offre, le process et un exemple de Voice Profile.</div>
-      </div>
-      <div class="step-row">
-        <div class="step-n">3</div>
-        <div class="step-t">Signature du contrat + démarrage sous 48h.</div>
-      </div>
+      <div class="step-row"><div class="step-n">1</div><div class="step-t">Nous analysons votre profil et vos réponses.</div></div>
+      <div class="step-row"><div class="step-n">2</div><div class="step-t">Vous recevez <strong>une proposition détaillée</strong> avec l'offre, le process et un exemple de Voice Profile.</div></div>
+      <div class="step-row"><div class="step-n">3</div><div class="step-t">Signature du contrat + démarrage sous 48h.</div></div>
     </div>
     <p style="font-size:13px; color: var(--text3); line-height: 1.7;">
       Une question urgente ?<br>
       <span style="color: var(--text2);">AuthorScale33@gmail.com</span>
     </p>
+    <div class="legal-footer">
+      <p>
+        <strong style="color:var(--text3); letter-spacing:0.08em; text-transform:uppercase; font-size:10px;">AuthorScale</strong><br>
+        RCS 810658658<br>
+        Vos données sont collectées uniquement pour traiter votre demande.<br>
+        Elles sont conservées 12 mois maximum et ne sont jamais transmises à des tiers.<br>
+        Pour toute demande d'accès ou de suppression : AuthorScale33@gmail.com
+      </p>
+    </div>
   </div>
 </div>
 
 </main>
 
-<!-- ── NAV BOTTOM ── -->
+<!-- NAV -->
 <div class="nav" id="nav" style="display:none">
   <button class="btn-nav" id="btnPrev" onclick="prev()" disabled>
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M8 2L4 6.5 8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -590,9 +483,36 @@ main { padding-top: 72px; }
 <script>
 let cur = 0;
 const TOTAL = 3;
-const formData = {};
+let consentOk = false;
 
-/* ── Choix unique ── */
+// SessionStorage — reprise auto
+function saveState() {
+  const state = {
+    q1: document.getElementById('q1')?.value || '',
+    q_email: document.getElementById('q_email')?.value || '',
+    q2: document.getElementById('q2')?.value || '',
+    q5: document.getElementById('q5')?.value || '',
+    cur: cur
+  };
+  try { sessionStorage.setItem('as_qual', JSON.stringify(state)); } catch(e) {}
+}
+
+function restoreState() {
+  try {
+    const s = JSON.parse(sessionStorage.getItem('as_qual') || '{}');
+    if (s.q1) document.getElementById('q1').value = s.q1;
+    if (s.q_email) document.getElementById('q_email').value = s.q_email;
+    if (s.q2) document.getElementById('q2').value = s.q2;
+    if (s.q5) document.getElementById('q5').value = s.q5;
+  } catch(e) {}
+}
+
+// Auto-save sur saisie
+['q1','q_email','q2','q5'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', saveState);
+});
+
 function selectChoice(gridId, btn) {
   document.querySelectorAll('#' + gridId + ' .choice-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -601,24 +521,26 @@ function selectChoice(gridId, btn) {
   if (err) err.classList.remove('on');
 }
 
-/* ── Choix multiple ── */
-function toggleCheck(btn) {
-  btn.classList.toggle('active');
+function toggleCheck(btn) { btn.classList.toggle('active'); }
+
+function toggleConsent() {
+  consentOk = !consentOk;
+  document.getElementById('consentBtn').classList.toggle('active', consentOk);
+  if (consentOk) document.getElementById('err-consent').classList.remove('on');
 }
 
-/* ── Validation ── */
 function fieldFilled(id) {
   const el = document.getElementById(id);
   return el && el.value.trim().length > 0;
 }
 
-function choiceSelected(gridId) {
-  return !!document.querySelector('#' + gridId + ' .choice-btn.active');
+function emailValid(id) {
+  const el = document.getElementById(id);
+  return el && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
 }
 
-function checkSelected(gridId) {
-  return !!document.querySelector('#' + gridId + ' .check-btn.active');
-}
+function choiceSelected(gridId) { return !!document.querySelector('#' + gridId + ' .choice-btn.active'); }
+function checkSelected(gridId) { return !!document.querySelector('#' + gridId + ' .check-btn.active'); }
 
 function setErr(id, show) {
   const el = document.getElementById(id);
@@ -630,41 +552,29 @@ function setErr(id, show) {
 const validators = {
   1: () => {
     let ok = true;
-    ['q1','q2'].forEach(id => {
-      const v = fieldFilled(id);
-      setErr(id, !v);
-      if (!v) ok = false;
-    });
+    if (!fieldFilled('q1')) { setErr('q1', true); ok = false; } else setErr('q1', false);
+    if (!emailValid('q_email')) { setErr('q_email', true); ok = false; } else setErr('q_email', false);
+    if (!fieldFilled('q2')) { setErr('q2', true); ok = false; } else setErr('q2', false);
     return ok;
   },
   2: () => {
     let ok = true;
-    if (!choiceSelected('q3-grid')) {
-      document.getElementById('err-q3').classList.add('on'); ok = false;
-    } else {
-      document.getElementById('err-q3').classList.remove('on');
-    }
-    if (!checkSelected('q4-grid')) {
-      document.getElementById('err-q4').classList.add('on'); ok = false;
-    } else {
-      document.getElementById('err-q4').classList.remove('on');
-    }
+    if (!choiceSelected('q3-grid')) { document.getElementById('err-q3').classList.add('on'); ok = false; }
+    else document.getElementById('err-q3').classList.remove('on');
+    if (!checkSelected('q4-grid')) { document.getElementById('err-q4').classList.add('on'); ok = false; }
+    else document.getElementById('err-q4').classList.remove('on');
     return ok;
   },
   3: () => {
     let ok = true;
-    if (!fieldFilled('q5')) { setErr('q5', true); ok = false; }
-    else setErr('q5', false);
-    if (!choiceSelected('q6-grid')) {
-      document.getElementById('err-q6').classList.add('on'); ok = false;
-    } else {
-      document.getElementById('err-q6').classList.remove('on');
-    }
+    if (!fieldFilled('q5')) { setErr('q5', true); ok = false; } else setErr('q5', false);
+    if (!choiceSelected('q6-grid')) { document.getElementById('err-q6').classList.add('on'); ok = false; }
+    else document.getElementById('err-q6').classList.remove('on');
+    if (!consentOk) { document.getElementById('err-consent').classList.add('on'); ok = false; }
     return ok;
   }
 };
 
-/* ── Navigation ── */
 function showScreen(n) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   const target = document.getElementById('s' + n);
@@ -683,7 +593,6 @@ function updateUI(n) {
   const btnNext = document.getElementById('btnNext');
 
   nav.style.display = (n === 0 || n === 4) ? 'none' : 'flex';
-
   const pct = n === 0 ? 0 : n === 4 ? 100 : Math.round((n / TOTAL) * 100);
   fill.style.width = pct + '%';
 
@@ -695,7 +604,7 @@ function updateUI(n) {
       ? 'Envoyer <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 6.5h7M6 3l3.5 3.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
       : 'Suivant <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M5 2l4 4.5L5 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   } else if (n === 4) {
-    hdrStep.innerHTML = '<span>Envoyé</span>';
+    hdrStep.innerHTML = '<span>Envoyé ✓</span>';
   } else {
     hdrStep.innerHTML = '—';
   }
@@ -716,14 +625,13 @@ function next() {
   showScreen(cur);
 }
 
-/* ── Soumission ── */
 function getChoiceVal(gridId) {
-  const active = document.querySelector('#' + gridId + ' .choice-btn.active');
-  return active ? active.dataset.val : '(non renseigné)';
+  const a = document.querySelector('#' + gridId + ' .choice-btn.active');
+  return a ? a.dataset.val : '(non renseigné)';
 }
 function getCheckVals(gridId) {
-  const active = document.querySelectorAll('#' + gridId + ' .check-btn.active');
-  return active.length ? Array.from(active).map(b => b.dataset.val).join(', ') : '(non renseigné)';
+  const a = document.querySelectorAll('#' + gridId + ' .check-btn.active');
+  return a.length ? Array.from(a).map(b => b.dataset.val).join(', ') : '(non renseigné)';
 }
 function v(id) {
   const el = document.getElementById(id);
@@ -731,33 +639,52 @@ function v(id) {
 }
 
 async function submitForm() {
-  const d = new Date();
-  const ds = d.toLocaleDateString('fr-FR');
+  document.getElementById('loader').classList.add('on');
 
   const payload = {
     _subject: 'Nouvelle qualification — AuthorScale (' + v('q1') + ')',
-    date: ds,
+    _replyto: v('q_email'),
+    date: new Date().toLocaleDateString('fr-FR'),
     prenom_secteur: v('q1'),
+    email: v('q_email'),
     pourquoi_linkedin: v('q2'),
     nombre_posts: getChoiceVal('q3-grid'),
     freins: getCheckVals('q4-grid'),
     objectif_3_mois: v('q5'),
-    budget: getChoiceVal('q6-grid')
+    budget: getChoiceVal('q6-grid'),
+    source: getChoiceVal('q7-grid')
   };
 
+  let success = false;
   try {
-    await fetch('https://formspree.io/f/xaqkdqro', {
+    const res = await fetch('https://formspree.io/f/xaqkdqro', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     });
+    success = res.ok;
   } catch(e) {
-    console.error('Erreur envoi Formspree', e);
+    success = false;
   }
 
+  document.getElementById('loader').classList.remove('on');
+
+  if (!success) {
+    // Afficher erreur réseau sans quitter le formulaire
+    const errBox = document.getElementById('network-err');
+    if (errBox) {
+      errBox.style.display = 'flex';
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+
+  try { sessionStorage.removeItem('as_qual'); } catch(e) {}
   go(4);
 }
 
+// Init
+restoreState();
 updateUI(0);
 </script>
 </body>
