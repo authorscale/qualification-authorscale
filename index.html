@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qualification — AuthorScale</title>
+<title>Votre interview — AuthorScale</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Epilogue:wght@300;400;500&display=swap');
 
@@ -22,211 +22,217 @@
   --gold2:     #c8a96e;
   --gold-soft: rgba(232,201,122,0.12);
   --err:       #d97560;
+  --warn:      #d4923a;
   --ok:        #7ec89a;
+  --mic:       #c97a7a;
+  --mic-soft:  rgba(201,122,122,0.12);
   --w: 660px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Epilogue', sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
-
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Epilogue',sans-serif;font-size:16px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;mix-blend-mode:overlay}
 
 /* HEADER */
-.hdr {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(14,12,10,0.94);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.hdr-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
-.hdr-right { display: flex; align-items: center; gap: 20px; }
-.hdr-step { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
-.hdr-step span { color: var(--gold); font-weight: 500; }
-.prog-track { width: 120px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold2), var(--gold)); border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1); width: 0%; }
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,12,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:0.04em}
+.hdr-right{display:flex;align-items:center;gap:20px}
+.hdr-step{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3)}
+.hdr-step span{color:var(--gold);font-weight:500}
+.prog-track{width:120px;height:2px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
 
-main { padding-top: 72px; }
-
-/* SCREENS */
-.screen { display: none; }
-.screen.active { display: block; animation: rise .4s ease forwards; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+main{padding-top:72px}
+.screen{display:none}
+.screen.active{display:block;animation:rise .4s ease forwards}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 /* WELCOME */
-.welcome { max-width: var(--w); margin: 0 auto; padding: 80px 40px 160px; }
-.eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
-.eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold2); }
-.welcome h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 6vw, 64px); line-height: 1.08; font-weight: 600; color: var(--text); margin-bottom: 32px; }
-.welcome h1 em { font-style: italic; color: var(--gold); }
-.welcome-lead { font-size: 17px; color: var(--text2); line-height: 1.75; max-width: 500px; margin-bottom: 48px; font-weight: 300; }
-.stats { display: flex; gap: 0; margin-bottom: 56px; border-top: 1px solid var(--border); padding-top: 32px; }
-.stat-item { padding-right: 32px; }
-.stat-item + .stat-item { padding-left: 32px; border-left: 1px solid var(--border); }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--text); line-height: 1; }
-.stat-lbl { font-size: 12px; color: var(--text3); margin-top: 4px; letter-spacing: 0.04em; }
-.btn-start { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: 'Epilogue', sans-serif; font-weight: 500; font-size: 15px; padding: 15px 32px; border: none; border-radius: 2px; cursor: pointer; letter-spacing: 0.04em; transition: background .2s, transform .15s; }
-.btn-start:hover { background: var(--gold2); transform: translateY(-1px); }
+.welcome{max-width:var(--w);margin:0 auto;padding:80px 40px 140px}
+.eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold2)}
+.welcome h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:600;margin-bottom:28px}
+.welcome h1 em{font-style:italic;color:var(--gold)}
+.welcome-lead{font-size:17px;color:var(--text2);line-height:1.75;max-width:500px;margin-bottom:40px;font-weight:300}
 
-/* PART SCREEN */
-.part-screen { max-width: var(--w); margin: 0 auto; padding: 64px 40px 160px; }
-.part-header { margin-bottom: 56px; }
-.part-num { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-.part-num::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold2); }
-.part-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4.5vw, 46px); line-height: 1.1; font-weight: 600; color: var(--text); margin-bottom: 12px; }
-.part-title em { font-style: italic; color: var(--gold); }
-.part-sub { font-size: 15px; color: var(--text2); font-weight: 300; font-style: italic; }
+.mode-cards{display:flex;gap:16px;margin-bottom:40px}
+.mode-card{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+.mode-card-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;margin-top:1px}
+.mode-card-icon.mic{background:var(--mic-soft);border:1px solid rgba(201,122,122,0.3)}
+.mode-card-icon.kb{background:var(--gold-soft);border:1px solid rgba(232,201,122,0.3)}
+.mode-card-body{font-size:13px;color:var(--text2);line-height:1.55;font-weight:300}
+.mode-card-body strong{display:block;color:var(--text);font-weight:500;margin-bottom:3px;font-size:13px}
 
-/* REMAINING INDICATOR */
-.remaining-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold-soft); border: 1px solid var(--border2);
-  padding: 6px 14px; border-radius: 2px;
-  font-size: 12px; color: var(--gold2); letter-spacing: 0.06em;
-  margin-bottom: 48px;
-}
-.remaining-badge svg { flex-shrink: 0; }
+.stats{display:flex;gap:40px;padding:28px 0;border-top:1px solid var(--border);margin-bottom:40px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;line-height:1}
+.stat-lbl{font-size:12px;color:var(--text3);margin-top:4px;letter-spacing:0.04em}
+
+.btn-start{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--bg);font-family:'Epilogue',sans-serif;font-weight:500;font-size:15px;padding:15px 32px;border:none;border-radius:2px;cursor:pointer;letter-spacing:0.04em;transition:background .2s,transform .15s}
+.btn-start:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-start svg{transition:transform .2s}
+.btn-start:hover svg{transform:translateX(4px)}
+
+/* CHAPTER */
+.chapter{max-width:var(--w);margin:0 auto;padding:64px 40px 160px}
+.chapter-header{margin-bottom:52px}
+.chap-eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.chap-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold2)}
+.chap-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,44px);line-height:1.1;font-weight:600;margin-bottom:10px}
+.chap-title em{font-style:italic;color:var(--gold)}
+.chap-sub{font-size:14px;color:var(--text3);font-weight:300;font-style:italic;line-height:1.6;max-width:460px}
+
+.divider{display:flex;align-items:center;gap:16px;margin:44px 0}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-mark{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text4)}
 
 /* QUESTION */
-.question { margin-bottom: 44px; }
-.q-wrap { display: flex; gap: 20px; }
-.q-idx { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); min-width: 24px; padding-top: 2px; font-style: italic; }
-.q-body { flex: 1; min-width: 0; }
-.q-text { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.5; margin-bottom: 6px; }
-.q-hint { font-size: 13px; color: var(--text3); font-weight: 300; font-style: italic; margin-bottom: 14px; line-height: 1.5; }
+.question{margin-bottom:0}
+.q-row{display:flex;gap:20px}
+.q-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);min-width:22px;padding-top:3px;font-style:italic;flex-shrink:0}
+.q-body{flex:1;min-width:0}
+.q-label{font-size:16px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:5px}
+.q-req{color:var(--gold);margin-left:2px;font-size:13px}
+.q-hint{font-size:13px;color:var(--text3);font-weight:300;font-style:italic;line-height:1.55;margin-bottom:16px}
 
-/* INPUTS */
-.q-input, .q-textarea {
-  width: 100%; background: var(--bg2); border: 1px solid var(--border);
-  color: var(--text); font-family: 'Epilogue', sans-serif; font-size: 14px; font-weight: 300;
-  padding: 14px 16px; border-radius: 2px; resize: vertical; line-height: 1.65;
-  transition: border-color .2s, box-shadow .2s, background .2s;
-}
-.q-input::placeholder, .q-textarea::placeholder { color: var(--text4); }
-.q-input:focus, .q-textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,201,122,0.12); background: var(--bg-focus); }
-.q-textarea { min-height: 110px; }
-.q-input.err, .q-textarea.err { border-color: var(--err); }
-.q-errmsg { font-size: 12px; color: var(--err); margin-top: 6px; display: none; }
-.q-errmsg.on { display: block; }
 
-/* CHOICE */
-.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
-.choice-btn { display: flex; align-items: center; justify-content: center; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); border-radius: 2px; padding: 12px 14px; cursor: pointer; font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400; text-align: center; transition: all .2s; min-height: 50px; line-height: 1.3; flex-direction: column; gap: 4px; }
-.choice-btn small { font-size: 11px; color: var(--text3); font-weight: 300; }
-.choice-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg3); }
-.choice-btn.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); font-weight: 500; }
-.choice-btn.active small { color: var(--gold2); }
+/* MODE TOGGLE */
+.mode-toggle{display:flex;gap:8px;margin-bottom:14px}
+.mbtn{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);color:var(--text3);border-radius:2px;padding:7px 14px;cursor:pointer;font-family:'Epilogue',sans-serif;font-size:12px;letter-spacing:0.04em;font-weight:400;transition:all .2s}
+.mbtn:hover{border-color:var(--border2);color:var(--text2)}
+.mbtn.m-mic{background:var(--mic-soft);border-color:rgba(201,122,122,0.5);color:var(--mic);font-weight:500}
+.mbtn.m-kb{background:var(--gold-soft);border-color:rgba(232,201,122,0.4);color:var(--gold);font-weight:500}
 
-/* CHECK */
-.check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-.check-btn { display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); border-radius: 2px; padding: 12px 14px; cursor: pointer; font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 400; transition: all .2s; text-align: left; }
-.check-btn:hover { border-color: var(--border2); color: var(--text); }
-.check-btn.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
-.check-mark { width: 14px; height: 14px; border: 1px solid var(--text3); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
-.check-btn.active .check-mark { background: var(--gold); border-color: var(--gold); }
-.check-btn.active .check-mark::after { content: ''; width: 6px; height: 6px; background: var(--bg); border-radius: 1px; }
+/* VOICE ZONE */
+.vzone{display:none}
+.vzone.on{display:block}
+.vcontrols{background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:16px 18px;margin-bottom:10px}
+.vrec-btn{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:1.5px solid var(--border2);border-radius:2px;padding:10px 16px;cursor:pointer;font-family:'Epilogue',sans-serif;font-size:13px;color:var(--text2);transition:all .2s;margin-bottom:10px;letter-spacing:0.02em}
+.vrec-btn:hover{border-color:var(--mic);color:var(--text)}
+.vrec-btn.rec{border-color:var(--mic);color:var(--mic);background:var(--mic-soft);animation:rpulse 1.5s infinite}
+@keyframes rpulse{0%,100%{box-shadow:0 0 0 0 rgba(201,122,122,0.3)}50%{box-shadow:0 0 0 6px rgba(201,122,122,0)}}
+.rdot{width:8px;height:8px;border-radius:50%;background:var(--mic);flex-shrink:0;animation:pulse 1s infinite}
+.rdot.hide{display:none}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.vstatus{font-size:12px;color:var(--text3);font-style:italic;min-height:16px}
+.vstatus.act{color:var(--mic)}
+.vstatus.ok{color:var(--ok)}
+.vtranscript{width:100%;background:var(--bg);border:1px solid var(--border);border-left:2px solid rgba(201,122,122,0.3);color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;font-weight:300;padding:13px 15px;border-radius:0 2px 2px 0;resize:vertical;line-height:1.65;min-height:100px;transition:border-color .2s}
+.vtranscript::placeholder{color:var(--text4)}
+.vtranscript:focus{outline:none;border-color:var(--mic);box-shadow:0 0 0 3px var(--mic-soft)}
+.vtranscript.lg{min-height:150px}
+.vhint{font-size:11px;color:var(--text4);margin-top:6px;font-style:italic}
+.vfallback{background:rgba(212,146,58,0.08);border:1px solid rgba(212,146,58,0.25);border-radius:2px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:var(--warn);font-style:italic;display:none}
+.vfallback.show{display:block}
 
-/* CONSENT */
-.consent-wrap { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
-.consent-btn { display: flex; align-items: flex-start; gap: 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; padding: 18px 20px; cursor: pointer; width: 100%; text-align: left; transition: all .2s; }
-.consent-btn:hover { border-color: var(--border2); }
-.consent-btn.active { background: var(--gold-soft); border-color: var(--gold); }
-.consent-box { width: 16px; height: 16px; border: 1px solid var(--text3); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; transition: all .2s; }
-.consent-btn.active .consent-box { background: var(--gold); border-color: var(--gold); }
-.consent-btn.active .consent-box::after { content: ''; width: 7px; height: 7px; background: var(--bg); border-radius: 1px; }
-.consent-text { font-size: 13px; color: var(--text2); line-height: 1.7; font-weight: 300; }
+/* TEXT ZONE */
+.tzone{display:none}
+.tzone.on{display:block}
+.q-ta{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;font-weight:300;padding:13px 15px;border-radius:2px;resize:vertical;line-height:1.65;min-height:110px;transition:border-color .2s,box-shadow .2s,background .2s}
+.q-ta::placeholder{color:var(--text4)}
+.q-ta:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);background:var(--bg-focus)}
+.q-ta.lg{min-height:160px}
+.q-ta.xl{min-height:220px}
+.q-input{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;font-weight:300;padding:12px 15px;border-radius:2px;transition:border-color .2s,box-shadow .2s,background .2s}
+.q-input::placeholder{color:var(--text4)}
+.q-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);background:var(--bg-focus)}
 
-/* DIVIDER */
-.divider { display: flex; align-items: center; gap: 16px; margin: 48px 0; }
-.divider-line { flex: 1; height: 1px; background: var(--border); }
-.divider-mark { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--text4); }
+/* PILIERS */
+.piliers-block{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.pilier-row{display:grid;grid-template-columns:1fr 80px;gap:10px;align-items:center}
+.pilier-name{background:var(--bg2);border:1px solid var(--border);color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;font-weight:300;padding:10px 14px;border-radius:2px;transition:border-color .2s,background .2s}
+.pilier-name::placeholder{color:var(--text4)}
+.pilier-name:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);background:var(--bg-focus)}
+.pilier-pct{background:var(--bg2);border:1px solid var(--border);color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;padding:10px 12px;border-radius:2px;text-align:center;width:100%;transition:border-color .2s}
+.pilier-pct::placeholder{color:var(--text4);font-family:'Epilogue',sans-serif;font-size:13px;font-weight:300}
+.pilier-pct:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.pilier-total{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:6px;font-size:12px;color:var(--text3);font-style:italic}
+.pilier-total-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+.pilier-total-num.ok{color:var(--ok)}
+.pilier-total-num.warn{color:var(--warn)}
+.pilier-total-num.err{color:var(--err)}
+.pilier-add{display:flex;align-items:center;gap:6px;background:transparent;border:1px dashed var(--border2);color:var(--text3);border-radius:2px;padding:8px 14px;cursor:pointer;font-family:'Epilogue',sans-serif;font-size:12px;letter-spacing:0.04em;transition:all .2s;margin-top:4px;width:fit-content}
+.pilier-add:hover{border-color:var(--gold);color:var(--gold)}
 
-/* LOADER OVERLAY */
-.loader-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(14,12,10,0.92);
-  display: none; align-items: center; justify-content: center;
-  flex-direction: column; gap: 20px;
-}
-.loader-overlay.on { display: flex; }
-.loader-spinner {
-  width: 36px; height: 36px;
-  border: 2px solid var(--border);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.loader-text { font-size: 13px; color: var(--text3); letter-spacing: 0.06em; }
+/* OBJECTIF TOGGLE */
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:4px}
+.obj-btn{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);border-radius:2px;padding:12px 14px;cursor:pointer;font-family:'Epilogue',sans-serif;font-size:13px;transition:all .2s;line-height:1.3}
+.obj-btn:hover{border-color:var(--border2);color:var(--text)}
+.obj-btn.active{background:var(--gold-soft);border-color:var(--gold);color:var(--gold);font-weight:500}
+.obj-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* CORPUS */
+.corpus-box{background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:20px}
+.corpus-intro{font-size:13px;color:var(--text2);font-weight:300;line-height:1.7;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.corpus-intro strong{color:var(--text);font-weight:500}
+.corpus-intro ul{padding-left:16px;margin-top:6px}
+.corpus-intro li{margin-bottom:3px}
+.corpus-counter{font-size:12px;color:var(--text3);margin-top:8px;font-style:italic}
+.corpus-counter span{color:var(--gold);font-weight:500}
+
+/* ERROR */
+.q-err{font-size:12px;color:var(--err);margin-top:6px;display:none}
+.q-err.on{display:block}
 
 /* NAV */
-.nav {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(14,12,10,0.96);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid var(--border);
-  padding: 18px 40px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.btn-nav { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text2); font-family: 'Epilogue', sans-serif; font-weight: 400; font-size: 14px; padding: 10px 20px; border: 1px solid var(--border); border-radius: 2px; cursor: pointer; transition: all .2s; letter-spacing: 0.02em; }
-.btn-nav:hover { border-color: var(--border2); color: var(--text); background: var(--bg2); }
-.btn-nav:disabled { opacity: .3; cursor: default; pointer-events: none; }
-.btn-next { background: var(--gold); color: var(--bg); border-color: var(--gold); }
-.btn-next:hover { background: var(--gold2); color: var(--bg); border-color: var(--gold2); }
-.nav-mid { font-size: 12px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(14,12,10,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:18px 40px;display:flex;justify-content:space-between;align-items:center}
+.bnav{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text2);font-family:'Epilogue',sans-serif;font-weight:400;font-size:14px;padding:10px 20px;border:1px solid var(--border);border-radius:2px;cursor:pointer;transition:all .2s}
+.bnav:hover{border-color:var(--border2);color:var(--text);background:var(--bg2)}
+.bnav:disabled{opacity:.3;cursor:default;pointer-events:none}
+.bnav.next{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.bnav.next:hover{background:var(--gold2);border-color:var(--gold2)}
+.nav-info{font-size:12px;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;text-align:center}
+.nav-info small{display:block;font-size:11px;color:var(--text4);margin-top:2px;letter-spacing:0.04em}
 
-/* CONFIRMATION */
-.confirm { max-width: var(--w); margin: 0 auto; padding: 80px 40px 140px; text-align: center; }
-.confirm-check { width: 56px; height: 56px; border: 1.5px solid var(--ok); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 40px; box-shadow: 0 0 24px rgba(126,200,154,0.15); }
-.confirm-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 5vw, 50px); line-height: 1.1; margin-bottom: 20px; color: var(--text); font-weight: 600; }
-.confirm-txt { font-size: 16px; color: var(--text2); font-weight: 300; line-height: 1.75; max-width: 460px; margin: 0 auto 48px; }
-.steps-block { text-align: left; background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; padding: 28px 32px; max-width: 440px; margin: 0 auto 40px; }
-.steps-block h3 { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
-.step-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
-.step-row:last-child { margin-bottom: 0; }
-.step-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); line-height: 1.3; min-width: 20px; }
-.step-t { font-size: 14px; color: var(--text2); line-height: 1.5; font-weight: 300; }
-.step-t strong { color: var(--text); font-weight: 500; }
-.legal-footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
-.legal-footer p { font-size: 11px; color: var(--text4); line-height: 1.8; letter-spacing: 0.02em; }
+/* CONFIRM */
+.confirm{max-width:var(--w);margin:0 auto;padding:80px 40px 140px;text-align:center}
+.confirm-icon{width:56px;height:56px;border:1.5px solid var(--ok);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 40px;box-shadow:0 0 24px rgba(126,200,154,0.15)}
+.confirm-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:20px;font-weight:600}
+.confirm-h1 em{font-style:italic;color:var(--gold)}
+.confirm-txt{font-size:16px;color:var(--text2);font-weight:300;line-height:1.75;max-width:440px;margin:0 auto 48px}
+.confirm-next{background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:24px 28px;max-width:400px;margin:0 auto;text-align:left}
+.confirm-next h3{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.cnext-row{display:flex;gap:14px;margin-bottom:14px}
+.cnext-row:last-child{margin-bottom:0}
+.cnext-n{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);line-height:1.3;min-width:18px}
+.cnext-t{font-size:13px;color:var(--text2);line-height:1.55;font-weight:300;padding-top:2px}
+.cnext-t strong{color:var(--text);font-weight:500}
 
-::selection { background: var(--gold); color: var(--bg); }
+.confirm-legal{font-size:11px;color:var(--text4);margin-top:28px;font-weight:300;letter-spacing:0.02em}
+.confirm-legal a{color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border)}
+.confirm-legal a:hover{color:var(--text2)}
+.consent-block{max-width:var(--w);margin:32px auto 0;padding:0 40px}
+.consent-label{display:flex;align-items:flex-start;gap:14px;background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:16px 18px;cursor:pointer;transition:border-color .2s}
+.consent-label:hover{border-color:var(--border2)}
+.consent-label.checked{border-color:var(--gold);background:var(--gold-soft)}
+.consent-check{width:18px;height:18px;border:1.5px solid var(--border2);border-radius:2px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.consent-label.checked .consent-check{background:var(--gold);border-color:var(--gold)}
+.consent-label.checked .consent-check::after{content:'';width:8px;height:8px;background:var(--bg);border-radius:1px}
+.consent-label span{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300}
+.confirm-footer{max-width:460px;margin:48px auto 0;padding-top:32px;border-top:1px solid var(--border);text-align:center}
+.confirm-footer-contact{margin-bottom:28px}
+.confirm-footer-contact span{display:block;font-size:12px;color:var(--text4);margin-bottom:4px}
+.confirm-footer-contact a{font-size:12px;color:var(--text3);text-decoration:none;font-weight:300;letter-spacing:0.02em}
+.confirm-footer-contact a:hover{color:var(--text2)}
+.confirm-footer-legal{padding-top:24px;border-top:1px solid var(--border)}
+.confirm-footer-legal strong{display:block;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.confirm-footer-legal span{display:block;font-size:11px;color:var(--text4);line-height:1.8;font-weight:300}
+.confirm-footer-legal a{color:var(--text4);text-decoration:none;border-bottom:1px solid var(--border)}
+.confirm-footer-legal a:hover{color:var(--text3)}
+::selection{background:var(--gold);color:var(--bg)}
 
-@media (max-width: 600px) {
-  .hdr { padding: 12px 20px; }
-  .prog-track { width: 80px; }
-  .welcome, .part-screen, .confirm { padding-left: 20px; padding-right: 20px; }
-  .stats { flex-direction: column; gap: 0; }
-  .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 20px; margin-top: 20px; }
-  .nav { padding: 14px 20px; }
-  .choice-grid { grid-template-columns: 1fr 1fr; }
-  .check-grid { grid-template-columns: 1fr; }
+@media(max-width:600px){
+  .hdr{padding:12px 20px}
+  .prog-track{width:80px}
+  .welcome,.chapter,.confirm{padding-left:20px;padding-right:20px}
+  .stats{gap:24px}
+  .nav{padding:14px 20px}
+  .mode-cards{flex-direction:column;gap:12px}
+  .pilier-row{grid-template-columns:1fr 64px}
 }
 </style>
 </head>
 <body>
-
-<!-- LOADER -->
-<div class="loader-overlay" id="loader">
-  <div class="loader-spinner"></div>
-  <div class="loader-text">Envoi en cours...</div>
-</div>
 
 <header class="hdr">
   <div class="hdr-brand">AuthorScale</div>
@@ -238,454 +244,814 @@ main { padding-top: 72px; }
 
 <main>
 
-<!-- SCREEN 0 : WELCOME -->
+<!-- ══════════ SCREEN 0 — WELCOME ══════════ -->
 <div class="screen active" id="s0">
-  <div class="welcome">
-    <div class="eyebrow">Qualification</div>
-    <h1>Avant de commencer,<br><em>parlons de vous.</em></h1>
-    <p class="welcome-lead">7 questions pour comprendre votre contexte et vérifier que notre approche correspond à vos attentes.</p>
-    <div class="stats">
-      <div class="stat-item"><div class="stat-num">7</div><div class="stat-lbl">questions</div></div>
-      <div class="stat-item"><div class="stat-num">5'</div><div class="stat-lbl">durée estimée</div></div>
-      <div class="stat-item"><div class="stat-num">48h</div><div class="stat-lbl">retour garanti</div></div>
+<div class="welcome">
+  <div class="eyebrow">Voice Profile — Onboarding</div>
+  <h1>Avant les posts,<br><em>parlons de vous.</em></h1>
+  <p class="welcome-lead">
+    On écrira pour vous, mais jamais sans vous. Cette interview, c'est là que tout se joue.
+  </p>
+
+  <div class="mode-cards">
+    <div class="mode-card">
+      <div class="mode-card-icon mic">🎤</div>
+      <div class="mode-card-body">
+        <strong>Répondre à l'oral</strong>
+        Cliquez sur le micro et parlez. Votre réponse est transcrite automatiquement. Idéal pour les questions ouvertes — la parole naturelle est le meilleur corpus.
+      </div>
     </div>
-    <button class="btn-start" onclick="go(1)">
-      Commencer
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+    <div class="mode-card">
+      <div class="mode-card-icon kb">⌨️</div>
+      <div class="mode-card-body">
+        <strong>Répondre à l'écrit</strong>
+        Tapez directement. Pour chaque question vous choisissez librement — changez de mode à tout moment.
+      </div>
+    </div>
   </div>
+
+  <div class="stats">
+    <div><div class="stat-num">13</div><div class="stat-lbl">questions</div></div>
+    <div><div class="stat-num">15'</div><div class="stat-lbl">à l'oral</div></div>
+    <div><div class="stat-num">25'</div><div class="stat-lbl">à l'écrit</div></div>
+  </div>
+
+  <button class="btn-start" onclick="goTo(1)">
+    Commencer
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
 </div>
 
-<!-- SCREEN 1 : PROFIL -->
+<!-- ══════════ SCREEN 1 — CE QU'AGENT 1 NE PEUT PAS LIRE ══════════ -->
 <div class="screen" id="s1">
-  <div class="part-screen">
-    <div class="part-header">
-      <div class="part-num">Partie 1 / 3</div>
-      <h2 class="part-title">Votre <em>profil</em></h2>
-      <p class="part-sub">Qui vous êtes et pourquoi LinkedIn maintenant.</p>
-    </div>
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chap-eyebrow">Partie 1 — 5 questions</div>
+    <h2 class="chap-title">Ce que votre<br><em>voix ne dit pas</em></h2>
+    <p class="chap-sub">Ce chapitre capture ce qu'aucun outil ne peut lire dans vos textes — vos lignes rouges, votre positionnement réel, ce que vous refusez d'incarner.</p>
+  </div>
 
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">1</div>
-        <div class="q-body">
-          <div class="q-text">Votre prénom et votre secteur d'activité</div>
-          <div class="q-hint">Juste pour personnaliser l'échange.</div>
-          <input type="text" id="q1" class="q-input" placeholder="Ex : Sophie — Coach en leadership">
-          <div class="q-errmsg" id="err-q1">Ce champ est requis.</div>
+  <!-- Q1 -->
+  <div class="question" id="q1">
+    <div class="q-row">
+      <div class="q-num">01</div>
+      <div class="q-body">
+        <div class="q-label">Présentez-vous comme vous le feriez à un inconnu sympa — version naturelle, pas version CV.<span class="q-req">*</span></div>
+        <div class="q-hint">Qui vous êtes, ce que vous faites, ce qui vous rend différent·e. Sans filtre.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q1-mb" onclick="setMode('q1','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q1-kb" onclick="setMode('q1','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
         </div>
+        <div class="vzone" id="q1-v">
+          <div class="vfallback" id="q1-fb">⚠️ Reconnaissance vocale non disponible sur ce navigateur. Utilisez Chrome ou Edge, ou répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q1-rb" onclick="toggleRec('q1')">
+              <div class="rdot hide" id="q1-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q1-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q1-st">Prêt — appuyez sur le micro et parlez naturellement</div>
+          </div>
+          <textarea class="vtranscript" id="q1-vta" placeholder="Votre transcription apparaît ici... Corrigez directement si besoin."></textarea>
+          <div class="vhint">💡 Parlez comme si vous expliquiez à un ami — c'est exactement ce dont on a besoin.</div>
+        </div>
+        <div class="tzone on" id="q1-t">
+          <textarea class="q-ta" id="q1-ta" placeholder="Ex : Je bosse en service client depuis 10 ans. Ma spécialité c'est rendre les gens autonomes plutôt que de leur mâcher le travail..."></textarea>
+        </div>
+        <div class="q-err" id="q1-err">Cette question est obligatoire.</div>
       </div>
     </div>
+  </div>
 
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">2</div>
-        <div class="q-body">
-          <div class="q-text">Votre adresse email</div>
-          <div class="q-hint">Pour vous recontacter avec notre réponse sous 48h.</div>
-          <input type="email" id="q_email" class="q-input" placeholder="Ex : sophie@monentreprise.com">
-          <div class="q-errmsg" id="err-q_email">Une adresse email valide est requise.</div>
-        </div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q2 -->
+  <div class="question" id="q2">
+    <div class="q-row">
+      <div class="q-num">02</div>
+      <div class="q-body">
+        <div class="q-label">Complétez : "Je suis le/la [rôle] qui aide [qui] à [résultat] sans [frustration habituelle du secteur]."<span class="q-req">*</span></div>
+        <div class="q-hint">Exemple : "Je suis la consultante RH qui aide les PME à recruter sans passer par des cabinets hors de prix."</div>
+        <input class="q-input" id="q2-ta" placeholder="Je suis le/la... qui aide... à... sans...">
+        <div class="q-err" id="q2-err">Cette question est obligatoire.</div>
       </div>
     </div>
+  </div>
 
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">3</div>
-        <div class="q-body">
-          <div class="q-text">Pourquoi LinkedIn maintenant ?</div>
-          <div class="q-hint">Qu'est-ce qui vous a poussé à chercher un ghostwriter à ce moment précis ?</div>
-          <textarea id="q2" class="q-textarea" placeholder="Ex : Je veux générer des leads mais je n'ai pas le temps d'écrire régulièrement..."></textarea>
-          <div class="q-errmsg" id="err-q2">Ce champ est requis.</div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q3 -->
+  <div class="question" id="q3">
+    <div class="q-row">
+      <div class="q-num">03</div>
+      <div class="q-body">
+        <div class="q-label">Quelle est la croyance dominante dans votre secteur que vous trouvez fausse — et qu'est-ce que vous avez envie de dire mais n'avez jamais osé ?<span class="q-req">*</span></div>
+        <div class="q-hint">Le cliché pro qui vous énerve. Le post qui démange. Ce que vous pensez vraiment mais que vous retenez sur LinkedIn.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q3-mb" onclick="setMode('q3','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q3-kb" onclick="setMode('q3','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q3-v">
+          <div class="vfallback" id="q3-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q3-rb" onclick="toggleRec('q3')">
+              <div class="rdot hide" id="q3-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q3-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q3-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q3-vta" placeholder="Votre transcription..."></textarea>
+          <div class="vhint">💡 Ne vous censurez pas — c'est exactement ce niveau de franchise qu'on cherche.</div>
+        </div>
+        <div class="tzone on" id="q3-t">
+          <textarea class="q-ta" id="q3-ta" placeholder="Ex : Tout le monde dit que les jeunes sont à l'aise avec la tech parce qu'ils sont nés avec un téléphone. C'est faux. Ce que j'ai jamais osé dire c'est que..."></textarea>
+        </div>
+        <div class="q-err" id="q3-err">Cette question est obligatoire.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q4 -->
+  <div class="question" id="q4">
+    <div class="q-row">
+      <div class="q-num">04</div>
+      <div class="q-body">
+        <div class="q-label">Vos tabous absolus : sujets hors-jeu, personnes ou marques à ne jamais citer, mots que vous détestez.<span class="q-req">*</span></div>
+        <div class="q-hint">Tout ce qui est absent de vos textes par choix — et non par oubli. Ce qu'on ne doit jamais écrire en votre nom.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q4-mb" onclick="setMode('q4','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q4-kb" onclick="setMode('q4','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q4-v">
+          <div class="vfallback" id="q4-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q4-rb" onclick="toggleRec('q4')">
+              <div class="rdot hide" id="q4-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q4-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q4-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q4-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q4-t">
+          <textarea class="q-ta" id="q4-ta" placeholder="Sujets : la religion, la politique, tout ce qui touche à mon employeur actuel...&#10;Personnes/marques : [noms]...&#10;Mots que je déteste : synergies, disrupter, agilité..."></textarea>
+        </div>
+        <div class="q-err" id="q4-err">Cette question est obligatoire.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q5 -->
+  <div class="question" id="q5">
+    <div class="q-row">
+      <div class="q-num">05</div>
+      <div class="q-body">
+        <div class="q-label">Quelle image refusez-vous absolument de donner sur LinkedIn — et quel profil ne voulez-vous jamais ressembler ?</div>
+        <div class="q-hint">L'anti-profil. Ce que vous refusez d'incarner, même si c'est ce qui "fonctionne" pour d'autres.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q5-mb" onclick="setMode('q5','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q5-kb" onclick="setMode('q5','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q5-v">
+          <div class="vfallback" id="q5-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q5-rb" onclick="toggleRec('q5')">
+              <div class="rdot hide" id="q5-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q5-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q5-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q5-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q5-t">
+          <textarea class="q-ta" id="q5-ta" placeholder="Ex : Le donneur de leçons qui étale sa science pour écraser les autres. Les posts inspirationnels vides. Le prosélytisme professionnel..."></textarea>
         </div>
       </div>
     </div>
   </div>
+
+</div>
 </div>
 
-<!-- SCREEN 2 : LINKEDIN -->
+<!-- ══════════ SCREEN 2 — CE QU'AGENT 2 NE PEUT PAS DEVINER ══════════ -->
 <div class="screen" id="s2">
-  <div class="part-screen">
-    <div class="part-header">
-      <div class="part-num">Partie 2 / 3</div>
-      <h2 class="part-title">Votre <em>situation</em> actuelle</h2>
-      <p class="part-sub">Votre présence LinkedIn aujourd'hui et vos freins.</p>
-    </div>
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chap-eyebrow">Partie 2 — 6 questions</div>
+    <h2 class="chap-title">Ce que votre<br><em>stratégie exige</em></h2>
+    <p class="chap-sub">Audience, objectifs, piliers, actualité. Ce chapitre construit le plan de contenu — aucun outil ne peut le deviner à votre place.</p>
+  </div>
 
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">4</div>
-        <div class="q-body">
-          <div class="q-text">Combien de posts LinkedIn avez-vous publiés à ce jour ?</div>
-          <div class="q-hint">Une estimation suffit — c'est pour calibrer l'analyse de votre voix.</div>
-          <div class="choice-grid" id="q3-grid">
-            <button type="button" class="choice-btn" data-val="0" onclick="selectChoice('q3-grid', this)">0 — jamais publié<small>Mais j'ai d'autres écrits</small></button>
-            <button type="button" class="choice-btn" data-val="1-10" onclick="selectChoice('q3-grid', this)">1 à 10 posts</button>
-            <button type="button" class="choice-btn" data-val="10-30" onclick="selectChoice('q3-grid', this)">10 à 30 posts</button>
-            <button type="button" class="choice-btn" data-val="30+" onclick="selectChoice('q3-grid', this)">30+ posts<small>Présence établie</small></button>
-          </div>
-          <div class="q-errmsg" id="err-q3">Veuillez sélectionner une option.</div>
+  <!-- Q6 -->
+  <div class="question" id="q6">
+    <div class="q-row">
+      <div class="q-num">06</div>
+      <div class="q-body">
+        <div class="q-label">Décrivez votre lecteur idéal : qui il est, ce qui l'empêche de dormir, ce qui le pousse à agir.<span class="q-req">*</span></div>
+        <div class="q-hint">Poste, secteur, taille d'entreprise si applicable. Sa douleur concrète. L'événement déclencheur qui le pousse à chercher une solution.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q6-mb" onclick="setMode('q6','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q6-kb" onclick="setMode('q6','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
         </div>
+        <div class="vzone" id="q6-v">
+          <div class="vfallback" id="q6-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q6-rb" onclick="toggleRec('q6')">
+              <div class="rdot hide" id="q6-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q6-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q6-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q6-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q6-t">
+          <textarea class="q-ta" id="q6-ta" placeholder="Ex : Des responsables de service client dans des ETI. Leur douleur : ils perdent un temps fou à répondre aux mêmes questions basiques. Ce qui les fait agir : une nouvelle vague de réclamations qui dépasse l'équipe..."></textarea>
+        </div>
+        <div class="q-err" id="q6-err">Cette question est obligatoire.</div>
       </div>
     </div>
+  </div>
 
-    <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
 
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">5</div>
-        <div class="q-body">
-          <div class="q-text">Quel est le vrai frein aujourd'hui ?</div>
-          <div class="q-hint">Vous pouvez en sélectionner plusieurs.</div>
-          <div class="check-grid" id="q4-grid">
-            <button type="button" class="check-btn" data-val="temps" onclick="toggleCheck(this)"><div class="check-mark"></div> Le temps — publier régulièrement</button>
-            <button type="button" class="check-btn" data-val="idees" onclick="toggleCheck(this)"><div class="check-mark"></div> Les idées — quoi dire</button>
-            <button type="button" class="check-btn" data-val="voix" onclick="toggleCheck(this)"><div class="check-mark"></div> La voix — ne sonne pas comme moi</button>
-            <button type="button" class="check-btn" data-val="resultats" onclick="toggleCheck(this)"><div class="check-mark"></div> Les résultats — pas de leads générés</button>
+  <!-- Q7 — OBJECTIF -->
+  <div class="question" id="q7">
+    <div class="q-row">
+      <div class="q-num">07</div>
+      <div class="q-body">
+        <div class="q-label">Quel est votre objectif principal sur LinkedIn — et comment vous saurez que ça marche ?<span class="q-req">*</span></div>
+        <div class="q-hint">Choisissez l'objectif prioritaire ci-dessous, puis précisez votre indicateur de succès personnel.</div>
+        <div class="obj-grid" id="obj-grid">
+          <button class="obj-btn" onclick="selectObj(this,'Génération de leads entrants')"><div class="obj-dot"></div>Leads entrants</button>
+          <button class="obj-btn" onclick="selectObj(this,'Notoriété & positionnement expert')"><div class="obj-dot"></div>Notoriété / expertise</button>
+          <button class="obj-btn" onclick="selectObj(this,'Recrutement')"><div class="obj-dot"></div>Recrutement</button>
+          <button class="obj-btn" onclick="selectObj(this,'Partenariats / co-traitance')"><div class="obj-dot"></div>Partenariats</button>
+          <button class="obj-btn" onclick="selectObj(this,'Autre')"><div class="obj-dot"></div>Autre</button>
+        </div>
+        <input class="q-input" id="q7-kpi" style="margin-top:12px" placeholder="Pour moi ça marche si... (ex : des DMs entrants, des appels de découverte, une invitation à parler...)">
+        <input type="hidden" id="q7-obj" value="">
+        <div class="q-err" id="q7-err">Choisissez un objectif.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q8 — PILIERS -->
+  <div class="question" id="q8">
+    <div class="q-row">
+      <div class="q-num">08</div>
+      <div class="q-body">
+        <div class="q-label">Sur quels sujets pourriez-vous parler 2h sans préparation ? Listez-les et répartissez-les en %.<span class="q-req">*</span></div>
+        <div class="q-hint">3 à 5 sujets. La répartition doit faire 100%. Pas besoin d'être exact — c'est votre intuition qui compte.</div>
+        <div class="piliers-block" id="piliers-block">
+          <div class="pilier-row"><input class="pilier-name" placeholder="Ex : Expérience client" oninput="calcPct()"><input class="pilier-pct" type="number" min="0" max="100" placeholder="%" oninput="calcPct()"></div>
+          <div class="pilier-row"><input class="pilier-name" placeholder="Ex : Autonomie & selfcare" oninput="calcPct()"><input class="pilier-pct" type="number" min="0" max="100" placeholder="%" oninput="calcPct()"></div>
+          <div class="pilier-row"><input class="pilier-name" placeholder="Ex : Management de l'information" oninput="calcPct()"><input class="pilier-pct" type="number" min="0" max="100" placeholder="%" oninput="calcPct()"></div>
+        </div>
+        <div class="pilier-total">
+          <span>Total :</span>
+          <span class="pilier-total-num" id="pct-total">0</span>
+          <span>/ 100%</span>
+        </div>
+        <button class="pilier-add" onclick="addPilier()">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Ajouter un sujet
+        </button>
+        <div class="q-err" id="q8-err">Renseignez au moins 3 sujets. Le total doit faire 100%.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q9 -->
+  <div class="question" id="q9">
+    <div class="q-row">
+      <div class="q-num">09</div>
+      <div class="q-body">
+        <div class="q-label">Quels événements importants avez-vous dans les 3 prochains mois ?</div>
+        <div class="q-hint">Lancement d'offre, prise de parole, conférence, partenariat à annoncer. Aussi : les périodes à éviter (vacances, rush).</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q9-mb" onclick="setMode('q9','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q9-kb" onclick="setMode('q9','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q9-v">
+          <div class="vfallback" id="q9-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q9-rb" onclick="toggleRec('q9')">
+              <div class="rdot hide" id="q9-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q9-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q9-st">Prêt</div>
           </div>
-          <div class="q-errmsg" id="err-q4">Veuillez sélectionner au moins une option.</div>
+          <textarea class="vtranscript" id="q9-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q9-t">
+          <textarea class="q-ta" id="q9-ta" placeholder="Ex : Lancement d'une nouvelle offre en juillet. Conférence RH le 15 juin. Août = vacances, rien à publier. Partenariat avec X à annoncer fin septembre..."></textarea>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q10 -->
+  <div class="question" id="q10">
+    <div class="q-row">
+      <div class="q-num">10</div>
+      <div class="q-body">
+        <div class="q-label">Quelles sont vos victoires récentes — résultats obtenus, retours clients, milestones ?</div>
+        <div class="q-hint">Ce qui s'est passé de concret ces 3 derniers mois et dont vous pourriez vous vanter (même modestement).</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q10-mb" onclick="setMode('q10','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q10-kb" onclick="setMode('q10','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q10-v">
+          <div class="vfallback" id="q10-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q10-rb" onclick="toggleRec('q10')">
+              <div class="rdot hide" id="q10-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q10-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q10-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q10-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q10-t">
+          <textarea class="q-ta" id="q10-ta" placeholder="Ex : Client X a réduit ses réclamations de 40% en 2 mois. Témoignage de Y reçu la semaine dernière. Promotion obtenue après avoir restructuré le service..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q11 -->
+  <div class="question" id="q11">
+    <div class="q-row">
+      <div class="q-num">11</div>
+      <div class="q-body">
+        <div class="q-label">Pourquoi LinkedIn maintenant — quel est le vrai déclencheur ?<span class="q-req">*</span></div>
+        <div class="q-hint">Pas la version "communication". Le vrai déclencheur — ce qui s'est passé ou ce que vous avez réalisé qui vous a fait franchir le pas.</div>
+        <div class="mode-toggle">
+          <button class="mbtn" id="q11-mb" onclick="setMode('q11','mic')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>Oral
+          </button>
+          <button class="mbtn m-kb" id="q11-kb" onclick="setMode('q11','kb')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>Écrit
+          </button>
+        </div>
+        <div class="vzone" id="q11-v">
+          <div class="vfallback" id="q11-fb">⚠️ Reconnaissance vocale non disponible. Répondez à l'écrit.</div>
+          <div class="vcontrols">
+            <button class="vrec-btn" id="q11-rb" onclick="toggleRec('q11')">
+              <div class="rdot hide" id="q11-dot"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+              <span id="q11-rt">Appuyer pour parler</span>
+            </button>
+            <div class="vstatus" id="q11-st">Prêt</div>
+          </div>
+          <textarea class="vtranscript" id="q11-vta" placeholder="Votre transcription..."></textarea>
+        </div>
+        <div class="tzone on" id="q11-t">
+          <textarea class="q-ta" id="q11-ta" placeholder="Ex : J'ai vu quelqu'un avec moins d'expérience que moi décrocher une opportunité via LinkedIn. J'ai réalisé que j'étais invisible alors que j'avais des choses à dire..."></textarea>
+        </div>
+        <div class="q-err" id="q11-err">Cette question est obligatoire.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 </div>
 
-<!-- SCREEN 3 : OBJECTIF + BUDGET -->
+<!-- ══════════ SCREEN 3 — CORPUS ══════════ -->
 <div class="screen" id="s3">
-  <div class="part-screen">
-    <div class="part-header">
-      <div class="part-num">Partie 3 / 3</div>
-      <h2 class="part-title">Votre <em>objectif</em></h2>
-      <p class="part-sub">Ce que vous visez et votre rapport à l'investissement.</p>
-    </div>
-
-    <!-- Badge "dernière ligne droite" -->
-    <div class="remaining-badge" id="remainingBadge">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Dernière partie — vous y êtes presque
-    </div>
-
-    <!-- Erreur réseau -->
-    <div id="network-err" style="display:none; align-items:center; gap:12px; background:#2a1a18; border:1px solid var(--err); border-radius:2px; padding:16px 20px; margin-bottom:32px;">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0"><circle cx="9" cy="9" r="8" stroke="#d97560" stroke-width="1.4"/><path d="M9 5v5M9 12.5v.5" stroke="#d97560" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div>
-        <div style="font-size:13px; color:#d97560; font-weight:500; margin-bottom:4px;">Erreur d'envoi</div>
-        <div style="font-size:12px; color:var(--text3); line-height:1.6;">Vérifiez votre connexion internet et réessayez. Si le problème persiste, contactez-nous directement à AuthorScale33@gmail.com</div>
-      </div>
-    </div>
-
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">6</div>
-        <div class="q-body">
-          <div class="q-text">Dans 3 mois, si LinkedIn fonctionne vraiment — ça ressemble à quoi concrètement ?</div>
-          <div class="q-hint">Soyez précis : plus de clients, plus de visibilité, un statut d'expert reconnu...</div>
-          <textarea id="q5" class="q-textarea" placeholder="Ex : 3 nouveaux clients par mois via LinkedIn, reconnu comme expert en transformation digitale..."></textarea>
-          <div class="q-errmsg" id="err-q5">Ce champ est requis.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
-
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx">7</div>
-        <div class="q-body">
-          <div class="q-text">Le budget pour le premier mois (1 000 €) — comment vous vous situez ?</div>
-          <div class="q-hint">Pas de jugement. Cela nous aide à adapter notre proposition.</div>
-          <div class="choice-grid" id="q6-grid">
-            <button type="button" class="choice-btn" data-val="ok" onclick="selectChoice('q6-grid', this)">C'est OK — prêt(e) à investir<small>Je vois ça comme un investissement</small></button>
-            <button type="button" class="choice-btn" data-val="discuter" onclick="selectChoice('q6-grid', this)">À discuter<small>J'ai des questions sur le ROI</small></button>
-            <button type="button" class="choice-btn" data-val="serré" onclick="selectChoice('q6-grid', this)">Budget serré<small>Mais motivé(e) à trouver une solution</small></button>
-          </div>
-          <div class="q-errmsg" id="err-q6">Veuillez sélectionner une option.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
-
-    <!-- SOURCE -->
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx" style="font-style:normal; font-size:11px; padding-top:3px;">+</div>
-        <div class="q-body">
-          <div class="q-text">Comment avez-vous entendu parler d'AuthorScale ?</div>
-          <div class="q-hint">Optionnel — utile pour nous améliorer.</div>
-          <div class="choice-grid" id="q7-grid">
-            <button type="button" class="choice-btn" data-val="linkedin" onclick="selectChoice('q7-grid', this)">LinkedIn</button>
-            <button type="button" class="choice-btn" data-val="bouche-a-oreille" onclick="selectChoice('q7-grid', this)">Bouche à oreille</button>
-            <button type="button" class="choice-btn" data-val="recherche" onclick="selectChoice('q7-grid', this)">Recherche Google</button>
-            <button type="button" class="choice-btn" data-val="autre" onclick="selectChoice('q7-grid', this)">Autre</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONSENTEMENT -->
-    <div class="consent-wrap">
-      <button type="button" class="consent-btn" id="consentBtn" onclick="toggleConsent()">
-        <div class="consent-box" id="consentBox"></div>
-        <div class="consent-text">J'accepte qu'AuthorScale utilise ces informations pour traiter ma demande et me recontacter. Ces données sont strictement confidentielles et ne seront jamais transmises à des tiers.</div>
-      </button>
-      <div class="q-errmsg" id="err-consent">Veuillez accepter pour continuer.</div>
-    </div>
-
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chap-eyebrow">Partie 3 — 2 questions</div>
+    <h2 class="chap-title">Votre<br><em>matière première</em></h2>
+    <p class="chap-sub">C'est ici que tout se joue. Plus vous fournissez de textes, plus vos posts sonneront comme vous —.</p>
   </div>
+
+  <!-- Q12 -->
+  <div class="question" id="q12">
+    <div class="q-row">
+      <div class="q-num">12</div>
+      <div class="q-body">
+        <div class="q-label">URL de votre profil LinkedIn</div>
+        <div class="q-hint">linkedin.com/in/votre-nom — pour référence et éventuel scraping de vos posts.</div>
+        <input class="q-input" id="q12-ta" placeholder="https://linkedin.com/in/...">
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">—</div><div class="divider-line"></div></div>
+
+  <!-- Q13 -->
+  <div class="question" id="q13">
+    <div class="q-row">
+      <div class="q-num">13</div>
+      <div class="q-body">
+        <div class="q-label">Collez ici vos textes existants — posts LinkedIn, emails longs, prises de parole transcrites.<span class="q-req">*</span></div>
+        <div class="q-hint">Minimum 15 textes pour une analyse complète. Séparez chaque texte par <strong>---</strong> sur une ligne seule.</div>
+        <div class="corpus-box">
+          <div class="corpus-intro">
+            <strong>Quoi coller ici :</strong>
+            <ul>
+              <li>Vos posts LinkedIn (texte brut, 1 par bloc)</li>
+              <li>Des emails professionnels longs (3+ paragraphes)</li>
+              <li>Des transcriptions de prises de parole, interviews</li>
+              <li>Des commentaires longs laissés sur d'autres posts</li>
+            </ul>
+          </div>
+          <textarea class="q-ta xl" id="q13-ta" placeholder="Post 1&#10;[Collez votre texte ici]&#10;&#10;---&#10;&#10;Post 2&#10;[Collez votre texte ici]&#10;&#10;---&#10;&#10;[Continuez...]" oninput="countTexts()"></textarea>
+          <div class="corpus-counter">Textes détectés : <span id="corpus-n">0</span> <span id="corpus-warn" style="color:var(--warn);display:none"> — minimum 15 recommandé pour un Voice Profile complet</span></div>
+        </div>
+        <div class="q-err" id="q13-err">Collez au moins 1 texte pour continuer.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="consent-block">
+    <label class="consent-label" id="consent-label">
+      <div class="consent-check" id="consent-box" onclick="toggleConsent()"></div>
+      <span>J'accepte qu'AuthorScale utilise ces informations pour traiter ma demande et me recontacter. Ces données sont strictement confidentielles et ne seront jamais transmises à des tiers.</span>
+    </label>
+    <div class="q-err" id="consent-err">Veuillez accepter pour continuer.</div>
+  </div>
+
+</div>
 </div>
 
-<!-- SCREEN 4 : CONFIRMATION -->
+<!-- ══════════ SCREEN 4 — CONFIRM ══════════ -->
 <div class="screen" id="s4">
-  <div class="confirm">
-    <div class="confirm-check">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11l4.5 4.5L17 7" stroke="#7ec89a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="confirm">
+  <div class="confirm-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7ec89a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1 class="confirm-h1">Interview<br><em>envoyée.</em></h1>
+  <p class="confirm-txt">Votre consultant AuthorScale reçoit vos réponses maintenant. La suite dans les 5 jours ouvrés.</p>
+
+  <div class="confirm-next">
+    <h3>Ce qui se passe ensuite</h3>
+    <div class="cnext-row"><div class="cnext-n">1</div><div class="cnext-t"><strong>J+2</strong> — Nous analysons votre voix et rédigeons votre profil éditorial. Vous le recevez pour validation.</div></div>
+    <div class="cnext-row"><div class="cnext-n">2</div><div class="cnext-t"><strong>J+5</strong> — Votre stratégie éditoriale du premier mois vous est envoyée par email. Sujets, angles, calendrier — vous validez avant le démarrage.</div></div>
+    <div class="cnext-row"><div class="cnext-n">3</div><div class="cnext-t"><strong>Chaque semaine</strong> — Vos posts de la semaine arrivent tout rédigés. Vous relisez, vous publiez — rien d'autre.</div></div>
+    
+    <div class="cnext-row"><div class="cnext-n">4</div><div class="cnext-t"><strong>Fin de mois</strong> — Vous recevez un bilan complet : posts publiés, performances, axes d'amélioration.</div></div>
+  </div>
+
+  <div class="confirm-footer">
+    <div class="confirm-footer-contact">
+      <span>Une question ?</span>
+      <a href="mailto:AuthorScale33@gmail.com">AuthorScale33@gmail.com</a>
     </div>
-    <h2 class="confirm-h1">Bien reçu.</h2>
-    <p class="confirm-txt">Merci pour vos réponses. Nous les lisons attentivement et revenons vers vous sous 48h avec une réponse personnalisée.</p>
-    <div class="steps-block">
-      <h3>Prochaine étape</h3>
-      <div class="step-row"><div class="step-n">1</div><div class="step-t">Nous analysons votre profil et vos réponses.</div></div>
-      <div class="step-row"><div class="step-n">2</div><div class="step-t">Vous recevez <strong>une proposition détaillée</strong> avec l'offre, le process et un exemple de Voice Profile.</div></div>
-      <div class="step-row"><div class="step-n">3</div><div class="step-t">Signature du contrat + démarrage sous 48h.</div></div>
-    </div>
-    <p style="font-size:13px; color: var(--text3); line-height: 1.7;">
-      Une question urgente ?<br>
-      <span style="color: var(--text2);">AuthorScale33@gmail.com</span>
-    </p>
-    <div class="legal-footer">
-      <p>
-        <strong style="color:var(--text3); letter-spacing:0.08em; text-transform:uppercase; font-size:10px;">AuthorScale</strong><br>
-        RCS 810658658<br>
-        Vos données sont collectées uniquement pour traiter votre demande.<br>
-        Elles sont conservées 12 mois maximum et ne sont jamais transmises à des tiers.<br>
-        Pour toute demande d'accès ou de suppression : AuthorScale33@gmail.com
-      </p>
+    <div class="confirm-footer-legal">
+      <strong>AUTHORSCALE</strong>
+      <span>RCS 810658658</span>
+      <span>Vos données sont collectées uniquement pour traiter votre demande.</span>
+      <span>Elles sont conservées 12 mois maximum et ne sont jamais transmises à des tiers.</span>
+      <span>Pour toute demande d'accès ou de suppression : <a href="mailto:AuthorScale33@gmail.com">AuthorScale33@gmail.com</a></span>
     </div>
   </div>
+</div>
 </div>
 
 </main>
 
 <!-- NAV -->
-<div class="nav" id="nav" style="display:none">
-  <button class="btn-nav" id="btnPrev" onclick="prev()" disabled>
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M8 2L4 6.5 8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Précédent
+<nav class="nav" id="mainNav" style="display:none">
+  <button class="bnav" id="btnPrev" onclick="prev()" disabled>
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Retour
   </button>
-  <div class="nav-mid" id="navMid">Partie 1 / 3</div>
-  <button class="btn-nav btn-next" id="btnNext" onclick="next()">
-    Suivant
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M5 2l4 4.5L5 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="nav-info" id="navInfo">
+    <div>Partie 1 / 3</div>
+    <small id="navSub"></small>
+  </div>
+  <button class="bnav next" id="btnNext" onclick="next()">
+    Continuer
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-</div>
+</nav>
 
 <script>
-let cur = 0;
-const TOTAL = 3;
+// ── CONSENT ──
 let consentOk = false;
-
-// SessionStorage — reprise auto
-function saveState() {
-  const state = {
-    q1: document.getElementById('q1')?.value || '',
-    q_email: document.getElementById('q_email')?.value || '',
-    q2: document.getElementById('q2')?.value || '',
-    q5: document.getElementById('q5')?.value || '',
-    cur: cur
-  };
-  try { sessionStorage.setItem('as_qual', JSON.stringify(state)); } catch(e) {}
-}
-
-function restoreState() {
-  try {
-    const s = JSON.parse(sessionStorage.getItem('as_qual') || '{}');
-    if (s.q1) document.getElementById('q1').value = s.q1;
-    if (s.q_email) document.getElementById('q_email').value = s.q_email;
-    if (s.q2) document.getElementById('q2').value = s.q2;
-    if (s.q5) document.getElementById('q5').value = s.q5;
-  } catch(e) {}
-}
-
-// Auto-save sur saisie
-['q1','q_email','q2','q5'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('input', saveState);
-});
-
-function selectChoice(gridId, btn) {
-  document.querySelectorAll('#' + gridId + ' .choice-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const errId = gridId.replace('-grid', '');
-  const err = document.getElementById('err-' + errId);
-  if (err) err.classList.remove('on');
-}
-
-function toggleCheck(btn) { btn.classList.toggle('active'); }
-
 function toggleConsent() {
   consentOk = !consentOk;
-  document.getElementById('consentBtn').classList.toggle('active', consentOk);
-  if (consentOk) document.getElementById('err-consent').classList.remove('on');
+  const label = document.getElementById('consent-label');
+  const box = document.getElementById('consent-box');
+  label.className = 'consent-label' + (consentOk ? ' checked' : '');
 }
 
-function fieldFilled(id) {
-  const el = document.getElementById(id);
-  return el && el.value.trim().length > 0;
+// ── CONFIG ──
+const FORMSPREE = 'https://formspree.io/f/xaqkdqro';
+const TOTAL_PARTS = 3;
+let current = 0;
+const recognizers = {};
+const isRec = {};
+
+// ── NAVIGATION ──
+function goTo(n) {
+  document.getElementById('s' + current).classList.remove('active');
+  current = n;
+  document.getElementById('s' + current).classList.add('active');
+  window.scrollTo(0, 0);
+  document.querySelector('.hdr').style.display = current === 4 ? 'none' : '';
+  updateNav();
 }
 
-function emailValid(id) {
-  const el = document.getElementById(id);
-  return el && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
-}
-
-function choiceSelected(gridId) { return !!document.querySelector('#' + gridId + ' .choice-btn.active'); }
-function checkSelected(gridId) { return !!document.querySelector('#' + gridId + ' .check-btn.active'); }
-
-function setErr(id, show) {
-  const el = document.getElementById(id);
-  if (el) el.classList.toggle('err', show);
-  const err = document.getElementById('err-' + id);
-  if (err) err.classList.toggle('on', show);
-}
-
-const validators = {
-  1: () => {
-    let ok = true;
-    if (!fieldFilled('q1')) { setErr('q1', true); ok = false; } else setErr('q1', false);
-    if (!emailValid('q_email')) { setErr('q_email', true); ok = false; } else setErr('q_email', false);
-    if (!fieldFilled('q2')) { setErr('q2', true); ok = false; } else setErr('q2', false);
-    return ok;
-  },
-  2: () => {
-    let ok = true;
-    if (!choiceSelected('q3-grid')) { document.getElementById('err-q3').classList.add('on'); ok = false; }
-    else document.getElementById('err-q3').classList.remove('on');
-    if (!checkSelected('q4-grid')) { document.getElementById('err-q4').classList.add('on'); ok = false; }
-    else document.getElementById('err-q4').classList.remove('on');
-    return ok;
-  },
-  3: () => {
-    let ok = true;
-    if (!fieldFilled('q5')) { setErr('q5', true); ok = false; } else setErr('q5', false);
-    if (!choiceSelected('q6-grid')) { document.getElementById('err-q6').classList.add('on'); ok = false; }
-    else document.getElementById('err-q6').classList.remove('on');
-    if (!consentOk) { document.getElementById('err-consent').classList.add('on'); ok = false; }
-    return ok;
-  }
-};
-
-function showScreen(n) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('s' + n);
-  if (!target) return;
-  target.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  updateUI(n);
-}
-
-function updateUI(n) {
-  const nav = document.getElementById('nav');
-  const fill = document.getElementById('progFill');
-  const hdrStep = document.getElementById('hdrStep');
-  const navMid = document.getElementById('navMid');
-  const btnPrev = document.getElementById('btnPrev');
-  const btnNext = document.getElementById('btnNext');
-
-  nav.style.display = (n === 0 || n === 4) ? 'none' : 'flex';
-  const pct = n === 0 ? 0 : n === 4 ? 100 : Math.round((n / TOTAL) * 100);
-  fill.style.width = pct + '%';
-
-  if (n > 0 && n <= TOTAL) {
-    hdrStep.innerHTML = 'Partie <span>' + n + '</span> / ' + TOTAL;
-    navMid.textContent = 'Partie ' + n + ' / ' + TOTAL;
-    btnPrev.disabled = (n === 1);
-    btnNext.innerHTML = (n === TOTAL)
-      ? 'Envoyer <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 6.5h7M6 3l3.5 3.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-      : 'Suivant <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M5 2l4 4.5L5 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  } else if (n === 4) {
-    hdrStep.innerHTML = '<span>Envoyé ✓</span>';
-  } else {
-    hdrStep.innerHTML = '—';
-  }
-}
-
-function go(n) { cur = n; showScreen(n); }
-function prev() { if (cur > 1) { cur--; showScreen(cur); } }
 function next() {
-  if (cur === 0) { cur = 1; showScreen(1); return; }
-  const validator = validators[cur];
-  if (validator && !validator()) {
-    const firstErr = document.querySelector('.err, .q-errmsg.on');
-    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
+  if (!validate()) return;
+  if (current === TOTAL_PARTS) { submit(); return; }
+  goTo(current + 1);
+}
+
+function prev() {
+  if (current <= 1) { goTo(0); return; }
+  goTo(current - 1);
+}
+
+function updateNav() {
+  const nav = document.getElementById('mainNav');
+  const prev = document.getElementById('btnPrev');
+  const next = document.getElementById('btnNext');
+  const info = document.getElementById('navInfo');
+  const sub  = document.getElementById('navSub');
+  const fill = document.getElementById('progFill');
+  const step = document.getElementById('hdrStep');
+
+  if (current === 0 || current === 4) { nav.style.display = 'none'; return; }
+  nav.style.display = 'flex';
+
+  prev.disabled = (current === 1);
+
+  const labels = ['','Ce que votre voix ne dit pas','Ce que votre stratégie exige','Votre matière première'];
+  const qcounts = ['','5 questions','6 questions','2 questions'];
+
+  info.children[0].textContent = 'Partie ' + current + ' / ' + TOTAL_PARTS;
+  sub.textContent = labels[current];
+
+  if (current === TOTAL_PARTS) {
+    next.innerHTML = 'Envoyer <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  } else {
+    next.innerHTML = 'Continuer <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
-  if (cur === TOTAL) { submitForm(); return; }
-  cur++;
-  showScreen(cur);
+
+  const pct = ((current - 1) / TOTAL_PARTS) * 100;
+  fill.style.width = pct + '%';
+  step.innerHTML = 'Partie <span>' + current + '</span> / ' + TOTAL_PARTS;
 }
 
-function getChoiceVal(gridId) {
-  const a = document.querySelector('#' + gridId + ' .choice-btn.active');
-  return a ? a.dataset.val : '(non renseigné)';
-}
-function getCheckVals(gridId) {
-  const a = document.querySelectorAll('#' + gridId + ' .check-btn.active');
-  return a.length ? Array.from(a).map(b => b.dataset.val).join(', ') : '(non renseigné)';
-}
-function v(id) {
-  const el = document.getElementById(id);
-  return el ? (el.value.trim() || '(non renseigné)') : '(non renseigné)';
+// ── MODE TOGGLE ──
+document.querySelectorAll('.vzone').forEach(z => z.style.display = 'none');
+document.querySelectorAll('.tzone').forEach(z => { z.style.display = 'block'; z.classList.add('on'); });
+
+function setMode(qid, mode) {
+  const mb = document.getElementById(qid + '-mb');
+  const kb = document.getElementById(qid + '-kb');
+  const v  = document.getElementById(qid + '-v');
+  const t  = document.getElementById(qid + '-t');
+  mb.className = 'mbtn'; kb.className = 'mbtn';
+  if (mode === 'mic') {
+    mb.className = 'mbtn m-mic';
+    if (v) v.style.display = 'block';
+    if (t) t.style.display = 'none';
+    checkSpeech(qid);
+  } else {
+    kb.className = 'mbtn m-kb';
+    if (v) v.style.display = 'none';
+    if (t) t.style.display = 'block';
+    if (isRec[qid]) stopRec(qid);
+  }
 }
 
-async function submitForm() {
-  document.getElementById('loader').classList.add('on');
+// ── SPEECH ──
+function checkSpeech(qid) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    const fb = document.getElementById(qid + '-fb');
+    if (fb) fb.classList.add('show');
+    const vc = document.querySelector('#' + qid + '-v .vcontrols');
+    if (vc) vc.style.display = 'none';
+  }
+}
 
+function toggleRec(qid) {
+  isRec[qid] ? stopRec(qid) : startRec(qid);
+}
+
+function startRec(qid) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) return;
+  const rec = new SR();
+  rec.lang = 'fr-FR'; rec.continuous = true; rec.interimResults = true;
+  recognizers[qid] = rec; isRec[qid] = true;
+  const rb = document.getElementById(qid + '-rb');
+  const dot = document.getElementById(qid + '-dot');
+  const rt = document.getElementById(qid + '-rt');
+  const st = document.getElementById(qid + '-st');
+  const ta = document.getElementById(qid + '-vta');
+  rb.classList.add('rec'); dot.classList.remove('hide');
+  rt.textContent = 'En cours... (cliquez pour arrêter)';
+  if (st) { st.textContent = '🔴 Parlez maintenant...'; st.className = 'vstatus act'; }
+  let final = ta.value || '';
+  rec.onresult = e => {
+    let interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      e.results[i].isFinal ? (final += e.results[i].transcript + ' ') : (interim = e.results[i].transcript);
+    }
+    ta.value = final + interim;
+  };
+  rec.onerror = e => { if (st) st.textContent = 'Erreur : ' + e.error; stopRec(qid); };
+  rec.onend = () => { if (isRec[qid]) rec.start(); };
+  rec.start();
+}
+
+function stopRec(qid) {
+  if (recognizers[qid]) { recognizers[qid].onend = null; recognizers[qid].stop(); delete recognizers[qid]; }
+  isRec[qid] = false;
+  const rb = document.getElementById(qid + '-rb');
+  const dot = document.getElementById(qid + '-dot');
+  const rt = document.getElementById(qid + '-rt');
+  const st = document.getElementById(qid + '-st');
+  if (rb) rb.classList.remove('rec');
+  if (dot) dot.classList.add('hide');
+  if (rt) rt.textContent = 'Appuyer pour parler';
+  if (st) { st.textContent = '✓ Transcription sauvegardée — corrigez si besoin.'; st.className = 'vstatus ok'; }
+}
+
+// ── OBJECTIF ──
+function selectObj(btn, val) {
+  document.querySelectorAll('.obj-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('q7-obj').value = val;
+}
+
+// ── PILIERS ──
+function addPilier() {
+  const block = document.getElementById('piliers-block');
+  if (block.children.length >= 5) return;
+  const row = document.createElement('div');
+  row.className = 'pilier-row';
+  row.innerHTML = '<input class="pilier-name" placeholder="Sujet ' + (block.children.length + 1) + '" oninput="calcPct()"><input class="pilier-pct" type="number" min="0" max="100" placeholder="%" oninput="calcPct()">';
+  block.appendChild(row);
+}
+
+function calcPct() {
+  const pcts = document.querySelectorAll('.pilier-pct');
+  let total = 0;
+  pcts.forEach(p => {
+    let v = parseInt(p.value) || 0;
+    if (v > 100) { v = 100; p.value = 100; }
+    total += v;
+  });
+  if (total > 100) {
+    // réduire le dernier champ modifié pour ne pas dépasser 100
+    const all = [...document.querySelectorAll('.pilier-pct')];
+    let running = 0;
+    all.forEach(p => {
+      const v = parseInt(p.value) || 0;
+      if (running + v > 100) { p.value = Math.max(0, 100 - running); running = 100; }
+      else { running += v; }
+    });
+    total = 100;
+  }
+  const el = document.getElementById('pct-total');
+  el.textContent = total;
+  el.className = 'pilier-total-num ' + (total === 100 ? 'ok' : 'warn');
+}
+
+// ── CORPUS COUNT ──
+function countTexts() {
+  const ta = document.getElementById('q13-ta');
+  if (!ta || !ta.value.trim()) { document.getElementById('corpus-n').textContent = '0'; return; }
+  const seps = (ta.value.match(/^---\s*$/gm) || []).length;
+  const count = ta.value.trim() ? seps + 1 : 0;
+  document.getElementById('corpus-n').textContent = count;
+  document.getElementById('corpus-warn').style.display = count < 15 && count > 0 ? 'inline' : 'none';
+}
+
+// ── GET ANSWER ──
+function getVal(qid) {
+  const v = document.getElementById(qid + '-v');
+  const isVoice = v && v.style.display !== 'none';
+  if (isVoice) { const ta = document.getElementById(qid + '-vta'); return ta ? ta.value.trim() : ''; }
+  const ta = document.getElementById(qid + '-ta'); return ta ? ta.value.trim() : '';
+}
+
+// ── VALIDATION ──
+function clearErrs() { document.querySelectorAll('.q-err').forEach(e => e.classList.remove('on')); }
+function showErr(id) { const el = document.getElementById(id); if (el) el.classList.add('on'); }
+
+function validate() {
+  clearErrs(); let ok = true;
+  if (current === 1) {
+    if (!getVal('q1')) { showErr('q1-err'); ok = false; }
+    if (!document.getElementById('q2-ta').value.trim()) { showErr('q2-err'); ok = false; }
+    if (!getVal('q3')) { showErr('q3-err'); ok = false; }
+    if (!getVal('q4')) { showErr('q4-err'); ok = false; }
+  }
+  if (current === 2) {
+    if (!getVal('q6')) { showErr('q6-err'); ok = false; }
+    if (!document.getElementById('q7-obj').value) { showErr('q7-err'); ok = false; }
+    // piliers : au moins 3 noms renseignés
+    const names = [...document.querySelectorAll('.pilier-name')].filter(i => i.value.trim());
+    const total = parseInt(document.getElementById('pct-total').textContent) || 0;
+    if (names.length < 3 || total !== 100) { showErr('q8-err'); ok = false; }
+    if (!getVal('q11')) { showErr('q11-err'); ok = false; }
+  }
+  if (current === 3) {
+    if (!document.getElementById('q13-ta').value.trim()) { showErr('q13-err'); ok = false; }
+    if (!consentOk) { showErr('consent-err'); ok = false; }
+  }
+  if (!ok) window.scrollTo({ top: 0, behavior: 'smooth' });
+  return ok;
+}
+
+// ── PILIERS DATA ──
+function getPiliers() {
+  const rows = document.querySelectorAll('.pilier-row');
+  const out = [];
+  rows.forEach(r => {
+    const n = r.querySelector('.pilier-name').value.trim();
+    const p = r.querySelector('.pilier-pct').value.trim();
+    if (n) out.push(n + (p ? ' (' + p + '%)' : ''));
+  });
+  return out.join(' | ');
+}
+
+// ── SUBMIT ──
+async function submit() {
   const payload = {
-    _subject: 'Nouvelle qualification — AuthorScale (' + v('q1') + ')',
-    _replyto: v('q_email'),
-    date: new Date().toLocaleDateString('fr-FR'),
-    prenom_secteur: v('q1'),
-    email: v('q_email'),
-    pourquoi_linkedin: v('q2'),
-    nombre_posts: getChoiceVal('q3-grid'),
-    freins: getCheckVals('q4-grid'),
-    objectif_3_mois: v('q5'),
-    budget: getChoiceVal('q6-grid'),
-    source: getChoiceVal('q7-grid')
+    '01_presentation':    getVal('q1'),
+    '02_positionnement':  document.getElementById('q2-ta').value.trim(),
+    '03_convictions':     getVal('q3'),
+    '04_tabous':          getVal('q4'),
+    '05_anti_profil':     getVal('q5'),
+    '06_audience_ICP':    getVal('q6'),
+    '07_objectif':        document.getElementById('q7-obj').value + ' — ' + (document.getElementById('q7-kpi').value.trim() || 'KPI non précisé'),
+    '08_piliers':         getPiliers(),
+    '09_evenements':      getVal('q9'),
+    '10_victoires':       getVal('q10'),
+    '11_declencheur':     getVal('q11'),
+    '12_linkedin_url':    document.getElementById('q12-ta').value.trim(),
+    '13_corpus':          document.getElementById('q13-ta').value.substring(0, 4000) + (document.getElementById('q13-ta').value.length > 4000 ? '... [tronqué — corpus complet dans le .txt]' : '')
   };
 
-  let success = false;
   try {
-    const res = await fetch('https://formspree.io/f/xaqkdqro', {
+    await fetch(FORMSPREE, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     });
-    success = res.ok;
-  } catch(e) {
-    success = false;
-  }
+  } catch(e) { /* silent fail */ }
 
-  document.getElementById('loader').classList.remove('on');
-
-  if (!success) {
-    // Afficher erreur réseau sans quitter le formulaire
-    const errBox = document.getElementById('network-err');
-    if (errBox) {
-      errBox.style.display = 'flex';
-      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    return;
-  }
-
-  try { sessionStorage.removeItem('as_qual'); } catch(e) {}
-  go(4);
+  goTo(4);
 }
 
-// Init
-restoreState();
-updateUI(0);
+updateNav();
 </script>
 </body>
 </html>
