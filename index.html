@@ -121,7 +121,19 @@ main { padding-top: 72px; }
 .q-input::placeholder, .q-textarea::placeholder { color: var(--text4); }
 .q-input:focus, .q-textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,201,122,0.12); background: var(--bg-focus); }
 .q-textarea { min-height: 110px; }
-.q-input.err, .q-textarea.err { border-color: var(--err); }
+.q-select {
+  width: 100%; background: var(--bg2); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Epilogue', sans-serif; font-size: 14px; font-weight: 300;
+  padding: 14px 16px; border-radius: 2px; line-height: 1.65;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23c8a96e' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center;
+  cursor: pointer; padding-right: 44px;
+}
+.q-select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,201,122,0.12); background-color: var(--bg-focus); }
+.q-select option { background: var(--bg2); color: var(--text); }
+.q-input.err, .q-textarea.err, .q-select.err { border-color: var(--err); }
 .q-errmsg { font-size: 12px; color: var(--err); margin-top: 6px; display: none; }
 .q-errmsg.on { display: block; }
 
@@ -243,9 +255,9 @@ main { padding-top: 72px; }
   <div class="welcome">
     <div class="eyebrow">Qualification</div>
     <h1>Avant de commencer,<br><em>parlons de vous.</em></h1>
-    <p class="welcome-lead">7 questions pour comprendre votre contexte et vérifier que notre approche correspond à vos attentes.</p>
+    <p class="welcome-lead">8 questions pour comprendre votre contexte et vérifier que notre approche correspond à vos attentes.</p>
     <div class="stats">
-      <div class="stat-item"><div class="stat-num">7</div><div class="stat-lbl">questions</div></div>
+      <div class="stat-item"><div class="stat-num">8</div><div class="stat-lbl">questions</div></div>
       <div class="stat-item"><div class="stat-num">5'</div><div class="stat-lbl">durée estimée</div></div>
       <div class="stat-item"><div class="stat-num">48h</div><div class="stat-lbl">retour garanti</div></div>
     </div>
@@ -269,10 +281,35 @@ main { padding-top: 72px; }
       <div class="q-wrap">
         <div class="q-idx">1</div>
         <div class="q-body">
-          <div class="q-text">Votre prénom et votre secteur d'activité</div>
-          <div class="q-hint">Juste pour personnaliser l'échange.</div>
-          <input type="text" id="q1" class="q-input" placeholder="Ex : Sophie — Coach en leadership">
-          <div class="q-errmsg" id="err-q1">Ce champ est requis.</div>
+          <div class="q-text">Votre identité</div>
+          <div class="q-hint">Pour personnaliser l'échange.</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <input type="text" id="q_prenom" class="q-input" placeholder="Prénom">
+              <div class="q-errmsg" id="err-q_prenom">Prénom requis.</div>
+            </div>
+            <div>
+              <input type="text" id="q_nom" class="q-input" placeholder="Nom">
+              <div class="q-errmsg" id="err-q_nom">Nom requis.</div>
+            </div>
+          </div>
+          <input type="text" id="q_entreprise" class="q-input" placeholder="Votre entreprise" style="margin-bottom:12px;">
+          <div class="q-errmsg" id="err-q_entreprise">Entreprise requise.</div>
+          <select id="q_secteur" class="q-select">
+            <option value="">— Votre secteur d'activité —</option>
+            <option value="Conseil & Stratégie">Conseil & Stratégie</option>
+            <option value="Tech & SaaS">Tech & SaaS</option>
+            <option value="Finance & Investissement">Finance & Investissement</option>
+            <option value="Industrie & Manufacturing">Industrie & Manufacturing</option>
+            <option value="Santé & Pharma">Santé & Pharma</option>
+            <option value="Immobilier">Immobilier</option>
+            <option value="Marketing & Communication">Marketing & Communication</option>
+            <option value="Formation & Coaching">Formation & Coaching</option>
+            <option value="Juridique">Juridique</option>
+            <option value="RH & Recrutement">RH & Recrutement</option>
+            <option value="Autre">Autre</option>
+          </select>
+          <div class="q-errmsg" id="err-q_secteur">Secteur requis.</div>
         </div>
       </div>
     </div>
@@ -292,6 +329,18 @@ main { padding-top: 72px; }
     <div class="question">
       <div class="q-wrap">
         <div class="q-idx">3</div>
+        <div class="q-body">
+          <div class="q-text">Votre profil LinkedIn</div>
+          <div class="q-hint">Indispensable — nous analysons votre voix actuelle avant tout retour.</div>
+          <input type="url" id="q_linkedin" class="q-input" placeholder="https://www.linkedin.com/in/votre-profil">
+          <div class="q-errmsg" id="err-q_linkedin">URL LinkedIn valide requise (format : linkedin.com/in/...).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-wrap">
+        <div class="q-idx">4</div>
         <div class="q-body">
           <div class="q-text">Pourquoi LinkedIn maintenant ?</div>
           <div class="q-hint">Qu'est-ce qui vous a poussé à chercher un ghostwriter à ce moment précis ?</div>
@@ -314,7 +363,7 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">4</div>
+        <div class="q-idx">5</div>
         <div class="q-body">
           <div class="q-text">Combien de posts LinkedIn avez-vous publiés à ce jour ?</div>
           <div class="q-hint">Une estimation suffit — c'est pour calibrer l'analyse de votre voix.</div>
@@ -333,7 +382,7 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">5</div>
+        <div class="q-idx">6</div>
         <div class="q-body">
           <div class="q-text">Quel est le vrai frein aujourd'hui ?</div>
           <div class="q-hint">Vous pouvez en sélectionner plusieurs.</div>
@@ -376,7 +425,7 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">6</div>
+        <div class="q-idx">7</div>
         <div class="q-body">
           <div class="q-text">Dans 3 mois, si LinkedIn fonctionne vraiment — ça ressemble à quoi concrètement ?</div>
           <div class="q-hint">Soyez précis : plus de clients, plus de visibilité, un statut d'expert reconnu...</div>
@@ -390,35 +439,17 @@ main { padding-top: 72px; }
 
     <div class="question">
       <div class="q-wrap">
-        <div class="q-idx">7</div>
+        <div class="q-idx">8</div>
         <div class="q-body">
-          <div class="q-text">Le budget pour le premier mois (1 000 €) — comment vous vous situez ?</div>
-          <div class="q-hint">Pas de jugement. Cela nous aide à adapter notre proposition.</div>
+          <div class="q-text">Pour calibrer notre proposition, votre budget mensuel se situe :</div>
+          <div class="q-hint">Sans engagement — cela nous permet de vous orienter vers la formule pertinente.</div>
           <div class="choice-grid" id="q6-grid">
-            <button type="button" class="choice-btn" data-val="ok" onclick="selectChoice('q6-grid', this)">C'est OK — prêt(e) à investir<small>Je vois ça comme un investissement</small></button>
-            <button type="button" class="choice-btn" data-val="discuter" onclick="selectChoice('q6-grid', this)">À discuter<small>J'ai des questions sur le ROI</small></button>
-            <button type="button" class="choice-btn" data-val="serré" onclick="selectChoice('q6-grid', this)">Budget serré<small>Mais motivé(e) à trouver une solution</small></button>
+            <button type="button" class="choice-btn" data-val="<500€" onclick="selectChoice('q6-grid', this)">Moins de 500 €</button>
+            <button type="button" class="choice-btn" data-val="500-1500€" onclick="selectChoice('q6-grid', this)">Entre 500 € et 1 500 €</button>
+            <button type="button" class="choice-btn" data-val="1500-3500€" onclick="selectChoice('q6-grid', this)">Entre 1 500 € et 3 500 €</button>
+            <button type="button" class="choice-btn" data-val=">3500€" onclick="selectChoice('q6-grid', this)">Plus de 3 500 €</button>
           </div>
           <div class="q-errmsg" id="err-q6">Veuillez sélectionner une option.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
-
-    <!-- SOURCE -->
-    <div class="question">
-      <div class="q-wrap">
-        <div class="q-idx" style="font-style:normal; font-size:11px; padding-top:3px;">+</div>
-        <div class="q-body">
-          <div class="q-text">Comment avez-vous entendu parler d'AuthorScale ?</div>
-          <div class="q-hint">Optionnel — utile pour nous améliorer.</div>
-          <div class="choice-grid" id="q7-grid">
-            <button type="button" class="choice-btn" data-val="linkedin" onclick="selectChoice('q7-grid', this)">LinkedIn</button>
-            <button type="button" class="choice-btn" data-val="bouche-a-oreille" onclick="selectChoice('q7-grid', this)">Bouche à oreille</button>
-            <button type="button" class="choice-btn" data-val="recherche" onclick="selectChoice('q7-grid', this)">Recherche Google</button>
-            <button type="button" class="choice-btn" data-val="autre" onclick="selectChoice('q7-grid', this)">Autre</button>
-          </div>
         </div>
       </div>
     </div>
@@ -488,8 +519,12 @@ let consentOk = false;
 // SessionStorage — reprise auto
 function saveState() {
   const state = {
-    q1: document.getElementById('q1')?.value || '',
+    q_prenom: document.getElementById('q_prenom')?.value || '',
+    q_nom: document.getElementById('q_nom')?.value || '',
+    q_entreprise: document.getElementById('q_entreprise')?.value || '',
+    q_secteur: document.getElementById('q_secteur')?.value || '',
     q_email: document.getElementById('q_email')?.value || '',
+    q_linkedin: document.getElementById('q_linkedin')?.value || '',
     q2: document.getElementById('q2')?.value || '',
     q5: document.getElementById('q5')?.value || '',
     cur: cur
@@ -500,17 +535,22 @@ function saveState() {
 function restoreState() {
   try {
     const s = JSON.parse(sessionStorage.getItem('as_qual') || '{}');
-    if (s.q1) document.getElementById('q1').value = s.q1;
+    if (s.q_prenom) document.getElementById('q_prenom').value = s.q_prenom;
+    if (s.q_nom) document.getElementById('q_nom').value = s.q_nom;
+    if (s.q_entreprise) document.getElementById('q_entreprise').value = s.q_entreprise;
+    if (s.q_secteur) document.getElementById('q_secteur').value = s.q_secteur;
     if (s.q_email) document.getElementById('q_email').value = s.q_email;
+    if (s.q_linkedin) document.getElementById('q_linkedin').value = s.q_linkedin;
     if (s.q2) document.getElementById('q2').value = s.q2;
     if (s.q5) document.getElementById('q5').value = s.q5;
   } catch(e) {}
 }
 
 // Auto-save sur saisie
-['q1','q_email','q2','q5'].forEach(id => {
+['q_prenom','q_nom','q_entreprise','q_secteur','q_email','q_linkedin','q2','q5'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', saveState);
+  if (el && el.tagName === 'SELECT') el.addEventListener('change', saveState);
 });
 
 function selectChoice(gridId, btn) {
@@ -549,11 +589,27 @@ function setErr(id, show) {
   if (err) err.classList.toggle('on', show);
 }
 
+function linkedinValid(id) {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const v = el.value.trim();
+  return /^https?:\/\/([a-z]{2}\.)?(www\.)?linkedin\.(com|fr)\/in\/[a-zA-Z0-9\-_%]+\/?/.test(v);
+}
+
+function selectFilled(id) {
+  const el = document.getElementById(id);
+  return el && el.value && el.value.trim().length > 0;
+}
+
 const validators = {
   1: () => {
     let ok = true;
-    if (!fieldFilled('q1')) { setErr('q1', true); ok = false; } else setErr('q1', false);
+    if (!fieldFilled('q_prenom')) { setErr('q_prenom', true); ok = false; } else setErr('q_prenom', false);
+    if (!fieldFilled('q_nom')) { setErr('q_nom', true); ok = false; } else setErr('q_nom', false);
+    if (!fieldFilled('q_entreprise')) { setErr('q_entreprise', true); ok = false; } else setErr('q_entreprise', false);
+    if (!selectFilled('q_secteur')) { setErr('q_secteur', true); ok = false; } else setErr('q_secteur', false);
     if (!emailValid('q_email')) { setErr('q_email', true); ok = false; } else setErr('q_email', false);
+    if (!linkedinValid('q_linkedin')) { setErr('q_linkedin', true); ok = false; } else setErr('q_linkedin', false);
     if (!fieldFilled('q2')) { setErr('q2', true); ok = false; } else setErr('q2', false);
     return ok;
   },
@@ -642,17 +698,20 @@ async function submitForm() {
   document.getElementById('loader').classList.add('on');
 
   const payload = {
-    _subject: 'Nouvelle qualification — AuthorScale (' + v('q1') + ')',
+    _subject: 'Nouvelle qualification — AuthorScale (' + v('q_prenom') + ' ' + v('q_nom') + ')',
     _replyto: v('q_email'),
     date: new Date().toLocaleDateString('fr-FR'),
-    prenom_secteur: v('q1'),
+    prenom: v('q_prenom'),
+    nom: v('q_nom'),
+    entreprise: v('q_entreprise'),
+    secteur: v('q_secteur'),
     email: v('q_email'),
+    linkedin_url: v('q_linkedin'),
     pourquoi_linkedin: v('q2'),
     nombre_posts: getChoiceVal('q3-grid'),
     freins: getCheckVals('q4-grid'),
     objectif_3_mois: v('q5'),
-    budget: getChoiceVal('q6-grid'),
-    source: getChoiceVal('q7-grid')
+    budget: getChoiceVal('q6-grid')
   };
 
   let success = false;
