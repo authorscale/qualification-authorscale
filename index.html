@@ -691,7 +691,13 @@ function getCheckVals(gridId) {
 }
 function v(id) {
   const el = document.getElementById(id);
-  return el ? (el.value.trim() || '(non renseigné)') : '(non renseigné)';
+  if (!el) return '(non renseigné)';
+  const raw = (el.value || '').trim();
+  if (!raw) return '(non renseigné)';
+  // décoder entités HTML (ex: Finance &amp; Investissement → Finance & Investissement)
+  const txt = document.createElement('textarea');
+  txt.innerHTML = raw;
+  return txt.value;
 }
 
 async function submitForm() {
